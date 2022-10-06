@@ -1,16 +1,13 @@
-﻿using Cookbook_Database.Windows;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace Cookbook_Database
+namespace Cookbook_Database.Windows
 {
     /// <summary>
     /// Interaction logic for UserControlMenuItem.xaml
