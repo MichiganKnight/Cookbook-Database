@@ -36,5 +36,5 @@ publish/
 AssemblyInfo.cs
 
 # Solution files
-.csproj
-.sln
+*.csproj
+*.sln
