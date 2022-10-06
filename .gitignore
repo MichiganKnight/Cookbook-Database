@@ -31,10 +31,3 @@ bld/
 
 # Click-Once directory
 publish/
-
-# AssemblyInfo
-AssemblyInfo.cs
-
-# Solution files
-*.csproj
-*.sln
