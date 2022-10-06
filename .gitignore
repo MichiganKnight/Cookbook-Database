@@ -32,5 +32,9 @@ bld/
 # Click-Once directory
 publish/
 
-# Publish Web Output
-*.[Pp]ublish.xml
+# AssemblyInfo
+AssemblyInfo.cs
+
+# Solution files
+.csproj
+.sln
