@@ -89,6 +89,8 @@ namespace Cookbook_Database.Windows
         /// <param name="recipe">Name of recipe</param>
         private void CreateRecipeItems(string recipe)
         {
+            string name = Regex.Replace($"{recipe}Button", @"[^a-zA-Z0-9]+", "");
+
             Label label = new()
             {
                 Content = recipe,
@@ -97,7 +99,7 @@ namespace Cookbook_Database.Windows
                 FontWeight = FontWeights.Medium,
                 Foreground = Brushes.Blue,
                 HorizontalAlignment = HorizontalAlignment.Center,
-                Name = Regex.Replace($"{recipe}Button", @"[^a-zA-Z]+", "")
+                Name = ReplaceWithWord(name)
             };
 
             label.MouseUp += (s, e) =>
@@ -107,9 +109,7 @@ namespace Cookbook_Database.Windows
                     string name = entry.Key.ToString();
                     object resource = entry.Value;
 
-                    string recipeButton = $"{Regex.Replace(name, @"[^a-zA-Z]+", "")}Button";
-
-                    if (recipeButton == label.Name)
+                    if ($"{Regex.Replace(ReplaceWithWord(name), @"[^a-zA-Z]+", "")}Button" == label.Name)
                     {
                         RecipeImage.ImageSource = LoadImage((byte[])resource);
 
