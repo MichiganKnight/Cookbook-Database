@@ -31,6 +31,11 @@ namespace Cookbook_Database.Windows
             DisplayRecipes();
         }
 
+        /// <summary>
+        /// Print 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.P && RecipeImage.ImageSource != null)
