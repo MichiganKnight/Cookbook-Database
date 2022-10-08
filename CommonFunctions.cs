@@ -1,16 +1,22 @@
 ﻿using Cookbook_Database.Properties;
 using Cookbook_Database.Windows;
 using System.IO;
+using System.Printing;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Cookbook_Database
 {
     public static class CommonFunctions
     {
+        /// <summary>
+        /// Create GoBack button for recipe pages
+        /// </summary>
+        /// <returns><see cref="Label"/> that acts as a button</returns>
         public static Label CreateGoBackButton()
         {
             Label goBack = new()
@@ -27,6 +33,11 @@ namespace Cookbook_Database
             return goBack;
         }
 
+        /// <summary>
+        /// Load image from <see cref="MemoryStream"/>
+        /// </summary>
+        /// <param name="imageData">Image as an array of bytes</param>
+        /// <returns><see cref="BitmapImage"/></returns>
         public static BitmapImage LoadImage(byte[] imageData)
         {
             if (imageData == null || imageData.Length == 0) return null;
@@ -45,6 +56,10 @@ namespace Cookbook_Database
             return image;
         }
 
+        /// <summary>
+        /// Show all recipes
+        /// </summary>
+        /// <param name="recipeType">Type of recipes to show</param>
         public static void ShowRecipes(string recipeType)
         {
             switch (recipeType)
@@ -137,6 +152,37 @@ namespace Cookbook_Database
             }
 
             return text;
+        }
+
+        /// <summary>
+        /// Print Image
+        /// </summary>
+        /// <param name="image">Image to print</param>
+        public static void PrintImage(BitmapImage image)
+        {
+            DrawingVisual drawingVisual = new();
+
+            using (DrawingContext drawingContext = drawingVisual.RenderOpen())
+            {
+                drawingContext.DrawImage(image, new Rect
+                {
+                    Width = image.Width,
+                    Height = image.Height,
+                });
+            }
+
+            string printerName = "HPCAE19C (HP OfficeJet Pro 8710)";
+
+            LocalPrintServer printServer = new();
+            PrintDialog printDialog = new();
+            PrintQueue printQueue = printServer.GetPrintQueue(printerName);
+
+            printDialog.PrintQueue = printQueue;
+
+            if (printDialog.ShowDialog() == true)
+            {
+                printDialog.PrintVisual(drawingVisual, "Print Recipe");
+            }
         }
     }
 }
