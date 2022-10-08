@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Globalization;
+using System.Printing;
 using System.Resources;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 using static Cookbook_Database.CommonFunctions;
 
@@ -16,16 +18,28 @@ namespace Cookbook_Database.Windows
     /// </summary>
     public partial class RecipeView : Page
     {
+        private readonly ResourceSet ResourceSet = Properties.Resources.ResourceManager.GetResourceSet(CultureInfo.CurrentCulture, true, true);
+
         public RecipeView()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Page load function to call <see cref="SwitchBetweenRecipeTypes"/>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             SwitchBetweenRecipeTypes();
         }
 
+        /// <summary>
+        /// Go back from recipe image and call <see cref="SwitchBetweenRecipeTypes"/>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GoBackFromImageButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
             RecipePanel.Children.Clear();
@@ -35,6 +49,11 @@ namespace Cookbook_Database.Windows
             SwitchBetweenRecipeTypes();
         }
 
+        /// <summary>
+        /// Go back from generic recipe to the <see cref="MainWindow"/>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GoBackButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
             MainWindow? Form = Application.Current.MainWindow as MainWindow;
@@ -42,6 +61,32 @@ namespace Cookbook_Database.Windows
             Form.Frame.Visibility = Visibility.Collapsed;
         }
 
+        /// <summary>
+        /// Print 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Page_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.P && RecipeImage.ImageSource != null)
+            {
+                BitmapImage image = (BitmapImage)RecipeImage.ImageSource;
+
+                PrintImage(image);
+            }
+
+            if (e.Key == Key.X)
+            {
+                MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+
+                mainWindow.Close();
+            }
+        }
+
+        /// <summary>
+        /// Create the recipe button items
+        /// </summary>
+        /// <param name="recipe">Name of recipe</param>
         private void CreateRecipeItems(string recipe)
         {
             Label label = new()
@@ -57,18 +102,14 @@ namespace Cookbook_Database.Windows
 
             label.MouseUp += (s, e) =>
             {
-                ResourceSet resourceSet = Properties.Resources.ResourceManager.GetResourceSet(CultureInfo.CurrentCulture, true, true);
-
-                var testWasTrue = false;
-
-                foreach (DictionaryEntry entry in resourceSet)
+                foreach (DictionaryEntry entry in ResourceSet)
                 {
                     string name = entry.Key.ToString();
                     object resource = entry.Value;
 
-                    string temp = $"{Regex.Replace(name, @"[^a-zA-Z]+", "")}Button";
+                    string recipeButton = $"{Regex.Replace(name, @"[^a-zA-Z]+", "")}Button";
 
-                    if (temp == label.Name)
+                    if (recipeButton == label.Name)
                     {
                         RecipeImage.ImageSource = LoadImage((byte[])resource);
 
@@ -88,6 +129,9 @@ namespace Cookbook_Database.Windows
             RecipePanel.Children.Add(label);
         }
 
+        /// <summary>
+        /// Switch between recipes
+        /// </summary>
         private void SwitchBetweenRecipeTypes()
         {
             switch (Properties.Settings.Default.RecipeType)

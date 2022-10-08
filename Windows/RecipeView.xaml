@@ -5,13 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1080"
-      Title="RecipeView" Background="White" Loaded="Page_Loaded">
+      Title="RecipeView" Background="White" Loaded="Page_Loaded" KeyDown="Page_KeyDown">
 
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <StackPanel Name="RecipePanel">
                 <StackPanel.Background>
-                    <ImageBrush x:Name="RecipeImage" Stretch="None"/>
+                    <ImageBrush x:Name="RecipeImage" Stretch="Uniform"/>
                 </StackPanel.Background>
             </StackPanel>
         </ScrollViewer>
