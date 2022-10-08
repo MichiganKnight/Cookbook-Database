@@ -14,14 +14,14 @@
                 <ListViewItem Name="SaladInput" Background="#e5e5e5" Foreground="White" Padding="20 5" Content="Salads" Cursor="Hand" MouseUp="SaladInput_MouseUp" />
                 <ListViewItem Name="SoupInput" Background="#e5e5e5" Foreground="White" Padding="20 5" Content="Soups" Cursor="Hand" MouseUp="SoupInput_MouseUp" />
                 <ListViewItem Name="AppetizerInput" Background="#e5e5e5" Foreground="White" Padding="20 5" Content="Appetizers" Cursor="Hand" MouseUp="AppetizerInput_MouseUp" />
-                <ListViewItem Name="MeatInput" Background="#e5e5e5" Foreground="White" Padding="20 5" Content="Meat" Cursor="Hand" />
-                <ListViewItem Name="PoultryInput" Background="#e5e5e5" Foreground="White" Padding="20 5" Content="Poultry" Cursor="Hand" />
-                <ListViewItem Name="SeafoodInput" Background="#e5e5e5" Foreground="White" Padding="20 5" Content="Seafood" Cursor="Hand" />
-                <ListViewItem Name="VegetableInput" Background="#e5e5e5" Foreground="White" Padding="20 5" Content="Vegetables" Cursor="Hand" />
-                <ListViewItem Name="SideInput" Background="#e5e5e5" Foreground="White" Padding="20 5" Content="Sides" Cursor="Hand" />
-                <ListViewItem Name="DessertInput" Background="#e5e5e5" Foreground="White" Padding="20 5" Content="Desserts" Cursor="Hand" />
-                <ListViewItem Name="BreakfastInput" Background="#e5e5e5" Foreground="White" Padding="20 5" Content="Breakfast" Cursor="Hand" />
-                <ListViewItem Name="MiscInput" Background="#e5e5e5" Foreground="White" Padding="20 5" Content="Misc." Cursor="Hand" />
+                <ListViewItem Name="MeatInput" Background="#e5e5e5" Foreground="White" Padding="20 5" Content="Meat" Cursor="Hand" MouseUp="MeatInput_MouseUp" />
+                <ListViewItem Name="PoultryInput" Background="#e5e5e5" Foreground="White" Padding="20 5" Content="Poultry" Cursor="Hand" MouseUp="PoultryInput_MouseUp" />
+                <ListViewItem Name="SeafoodInput" Background="#e5e5e5" Foreground="White" Padding="20 5" Content="Seafood" Cursor="Hand" MouseUp="SeafoodInput_MouseUp" />
+                <ListViewItem Name="VegetableInput" Background="#e5e5e5" Foreground="White" Padding="20 5" Content="Vegetables" Cursor="Hand" MouseUp="VegetableInput_MouseUp" />
+                <ListViewItem Name="SideInput" Background="#e5e5e5" Foreground="White" Padding="20 5" Content="Sides" Cursor="Hand" MouseUp="SideInput_MouseUp" />
+                <ListViewItem Name="DessertInput" Background="#e5e5e5" Foreground="White" Padding="20 5" Content="Desserts" Cursor="Hand" MouseUp="DessertInput_MouseUp" />
+                <ListViewItem Name="BreakfastInput" Background="#e5e5e5" Foreground="White" Padding="20 5" Content="Breakfast" Cursor="Hand" MouseUp="BreakfastInput_MouseUp" />
+                <ListViewItem Name="MiscInput" Background="#e5e5e5" Foreground="White" Padding="20 5" Content="Misc." Cursor="Hand" MouseUp="MiscInput_MouseUp" />
             </ListView>
         </Popup>
         <Label Name="RemoveRecipe" Background="{x:Null}" Foreground="#e5e5e5" Height="50" Margin="220,0,0,0" Content="Remove A Recipe" FontSize="18" Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Top" MouseEnter="RemoveRecipe_MouseEnter" MouseLeave="RemoveRecipe_MouseLeave" MouseUp="RemoveRecipe_MouseUp" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
