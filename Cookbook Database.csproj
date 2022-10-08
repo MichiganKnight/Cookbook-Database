@@ -23,9 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\RecipeDatabase.db">
+    <Content Include="Resources\RecipeDatabase.db">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

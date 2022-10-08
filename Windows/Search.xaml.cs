@@ -103,8 +103,6 @@ namespace Cookbook_Database.Windows
                 {
                     ResourceSet resourceSet = Properties.Resources.ResourceManager.GetResourceSet(CultureInfo.CurrentCulture, true, true);
 
-                    var testWasTrue = false;
-
                     foreach (DictionaryEntry entry in resourceSet)
                     {
                         string name = entry.Key.ToString();
