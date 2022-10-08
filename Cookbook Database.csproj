@@ -19,12 +19,13 @@
   <ItemGroup>
     <None Remove="Properties\Icon.ico" />
     <None Remove="Properties\Search.png" />
+    <None Remove="Resources\RecipeDatabase.db" />
     <None Remove="Resources\Search.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resources\RecipeDatabase.db">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    <Content Include="RecipeDatabase.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 

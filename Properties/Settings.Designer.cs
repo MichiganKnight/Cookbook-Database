@@ -38,7 +38,7 @@ namespace Cookbook_Database.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\Resources\\RecipeDatabase.db;Version=3;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\RecipeDatabase.db;Version=3;")]
         public string ConnectionString {
             get {
                 return ((string)(this["ConnectionString"]));
