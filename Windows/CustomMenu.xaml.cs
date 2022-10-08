@@ -25,11 +25,77 @@ namespace Cookbook_Database.Windows
             Recipes.AddRange(AllRecipeModel.AllRecipeModelToString());
         }
 
+        #region Recipe Button Click Events
+
         private void SaladInput_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            ImportRecipe("Salad");
+        }
+
+        private void SoupInput_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ImportRecipe("Soup");
+        }
+
+        private void AppetizerInput_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ImportRecipe("Appetizer");
+        }
+
+        private void MeatInput_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ImportRecipe("Meat");
+        }
+
+        private void PoultryInput_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ImportRecipe("Poultry");
+        }
+
+        private void SeafoodInput_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ImportRecipe("Seafood");
+        }
+
+        private void VegetableInput_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ImportRecipe("Vegetable");
+        }
+
+        private void SideInput_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ImportRecipe("Side");
+        }
+
+        private void DessertInput_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ImportRecipe("Dessert");
+        }
+
+        private void BreakfastInput_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ImportRecipe("Breakfast");
+        }
+
+        private void MiscInput_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ImportRecipe("Misc");
+        }
+
+        /// <summary>
+        /// Import recipe from image file
+        /// </summary>
+        /// <param name="recipeType">Recipe to import</param>
+        private void ImportRecipe(string recipeType)
+        {
+            DropdownButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#333");
+            DropdownButton.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#e5e5e5");
+
+            Dropdown.IsOpen = false;
+
             OpenFileDialog fileDialog = new()
             {
-                Title = "Import Salad Recipe",
+                Title = $"Import {recipeType} Recipe",
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
                 DefaultExt = ".jpg",
                 Filter = "JPEG Image (*.jpg)|*.jpg",
@@ -43,15 +109,7 @@ namespace Cookbook_Database.Windows
             }
         }
 
-        private void SoupInput_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            
-        }
-
-        private void AppetizerInput_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-
-        }
+        #endregion
 
         private void RemoveRecipe_MouseUp(object sender, MouseButtonEventArgs e)
         {
@@ -67,36 +125,46 @@ namespace Cookbook_Database.Windows
 
         private void DropdownButton_MouseEnter(object sender, MouseEventArgs e)
         {
-            ChangeColorOnMouseEnter();
+            DropdownButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#ddd");
+            DropdownButton.Foreground = Brushes.White;
 
             Dropdown.IsOpen = true;
         }
 
         private void DropdownButton_MouseLeave(object sender, MouseEventArgs e)
         {
-            ChangeColorOnMouseLeave();
+            DropdownButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#333");
+            DropdownButton.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#e5e5e5");
 
             Dropdown.IsOpen = false;
         }
 
         private void RemoveRecipe_MouseEnter(object sender, MouseEventArgs e)
         {
-            ChangeColorOnMouseEnter();
+            RemoveRecipe.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#ddd");
+            RemoveRecipe.Foreground = Brushes.White;
         }
 
         private void RemoveRecipe_MouseLeave(object sender, MouseEventArgs e)
         {
-            ChangeColorOnMouseLeave();
+            RemoveRecipe.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#333");
+            RemoveRecipe.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#e5e5e5");
         }
 
         private void Dropdown_MouseEnter(object sender, MouseEventArgs e)
         {
             Dropdown.IsOpen = true;
+
+            DropdownButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#ddd");
+            DropdownButton.Foreground = Brushes.White;
         }
 
         private void Dropdown_MouseLeave(object sender, MouseEventArgs e)
         {
             Dropdown.IsOpen = false;
+
+            DropdownButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#333");
+            DropdownButton.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#e5e5e5");
         }
 
         private void Submit_MouseEnter(object sender, MouseEventArgs e)
@@ -107,18 +175,6 @@ namespace Cookbook_Database.Windows
         private void Submit_MouseLeave(object sender, MouseEventArgs e)
         {
             Submit.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#ccc");
-        }
-
-        private void ChangeColorOnMouseEnter()
-        {
-            RemoveRecipe.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#ddd");
-            RemoveRecipe.Foreground = Brushes.White;
-        }
-
-        private void ChangeColorOnMouseLeave()
-        {
-            RemoveRecipe.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#333");
-            RemoveRecipe.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#e5e5e5");
         }
 
         #endregion
