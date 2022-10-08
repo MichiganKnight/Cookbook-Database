@@ -6,7 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-
+using System.Windows.Media.Imaging;
 using static Cookbook_Database.CommonFunctions;
 
 namespace Cookbook_Database.Windows
@@ -21,11 +21,38 @@ namespace Cookbook_Database.Windows
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Page load function to call <see cref="DisplayRecipes"/>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             DisplayRecipes();
         }
 
+        private void Page_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.P && RecipeImage.ImageSource != null)
+            {
+                BitmapImage image = (BitmapImage)RecipeImage.ImageSource;
+
+                PrintImage(image);
+            }
+
+            if (e.Key == Key.X)
+            {
+                MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+
+                mainWindow.Close();
+            }
+        }
+
+        /// <summary>
+        /// Go back from recipe image and call <see cref="DisplayRecipes"/>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GoBackFromImageButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
             RecipePanel.Children.Clear();
@@ -35,6 +62,11 @@ namespace Cookbook_Database.Windows
             DisplayRecipes();
         }
 
+        /// <summary>
+        /// Go back from generic recipe to the <see cref="MainWindow"/>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GoBackButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
             MainWindow? Form = Application.Current.MainWindow as MainWindow;
@@ -42,6 +74,9 @@ namespace Cookbook_Database.Windows
             Form.Frame.Visibility = Visibility.Collapsed;
         }
 
+        /// <summary>
+        /// Create the recipe button items
+        /// </summary>
         private void CreateRecipeItems()
         {
             foreach (string recipe in AllRecipeModel.AllRecipeModelToString())
@@ -92,9 +127,8 @@ namespace Cookbook_Database.Windows
         }
 
         /// <summary>
-        /// Display all recipes of <see cref="Settings.Default.RecipeType"/>
+        /// Display all recipes
         /// </summary>
-        /// <param name="recipeType">Type of recipe</param>
         public void DisplayRecipes()
         {
             CreateRecipeItems();
