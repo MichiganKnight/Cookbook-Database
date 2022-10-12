@@ -1,4 +1,7 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 
 using static Cookbook_Database.CommonFunctions;
 
@@ -69,6 +72,21 @@ namespace Cookbook_Database
         private void BtnMisc_Click(object sender, RoutedEventArgs e)
         {
             ShowRecipes("Misc");
+        }
+
+        private void Btn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Button? button = sender as Button;
+
+            button.Background = Brushes.LightGray;
+            button.BorderBrush = null;
+        }
+
+        private void Btn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Button? button = sender as Button;
+
+            button.Background = Brushes.White;
         }
     }
 }

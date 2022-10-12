@@ -5,14 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:Cookbook_Database.Windows"
         mc:Ignorable="d"
-        Title="Cookbook Database" Height="720" Width="1280" WindowStartupLocation="CenterScreen" WindowState="Maximized" Icon="/Resources/Icon.ico"
+        Title="Cookbook Database" Background="White" Height="720" Width="1280" WindowStartupLocation="CenterScreen" WindowState="Maximized" Icon="/Resources/Icon.ico"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="18"
         TextOptions.TextFormattingMode="Ideal" 
-        TextOptions.TextRenderingMode="Auto"        
-        Background="{DynamicResource MaterialDesignPaper}"
+        TextOptions.TextRenderingMode="Auto"
         FontFamily="{DynamicResource MaterialDesignFont}"
         ResizeMode="NoResize">
     <Grid>
@@ -26,17 +25,17 @@
             </Grid>
         </materialDesign:ColorZone>
         <Label Content="Cookbook Database" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Margin="0,10,0,0" Grid.Row="1" />
-        <Button x:Name="BtnSalads" Height="50" Content="Salads" HorizontalAlignment="Left" Margin="10,50,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="25" FontWeight="Medium" Background="{x:Null}" Foreground="Blue" BorderBrush="{x:Null}" Click="BtnSalads_Click" />
-        <Button x:Name="BtnSoups" Height="50" Content="Soups" HorizontalAlignment="Left" Margin="10,100,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="25" FontWeight="Medium" Background="{x:Null}" Foreground="Blue" BorderBrush="{x:Null}" Click="BtnSoups_Click" />
-        <Button x:Name="BtnAppetizers" Height="50" Content="Appetizers" HorizontalAlignment="Left" Margin="10,150,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="25" FontWeight="Medium" Background="{x:Null}" Foreground="Blue" BorderBrush="{x:Null}" Click="BtnAppetizers_Click" />
-        <Button x:Name="BtnMeat" Height="50" Content="Meat" HorizontalAlignment="Left" Margin="10,200,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="25" FontWeight="Medium" Background="{x:Null}" Foreground="Blue" BorderBrush="{x:Null}" Click="BtnMeat_Click" />
-        <Button x:Name="BtnPoultry" Height="50" Content="Poultry" HorizontalAlignment="Left" Margin="10,250,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="25" FontWeight="Medium" Background="{x:Null}" Foreground="Blue" BorderBrush="{x:Null}" Click="BtnPoultry_Click" />
-        <Button x:Name="BtnSeafood" Height="50" Content="Seafood" HorizontalAlignment="Left" Margin="10,300,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="25" FontWeight="Medium" Background="{x:Null}" Foreground="Blue" BorderBrush="{x:Null}" Click="BtnSeafood_Click" />
-        <Button x:Name="BtnVegetables" Height="50" Content="Vegetables" HorizontalAlignment="Left" Margin="10,350,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="25" FontWeight="Medium" Background="{x:Null}" Foreground="Blue" BorderBrush="{x:Null}" Click="BtnVegetables_Click" />
-        <Button x:Name="BtnSides" Height="50" Content="Sides" HorizontalAlignment="Left" Margin="10,400,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="25" FontWeight="Medium" Background="{x:Null}" Foreground="Blue" BorderBrush="{x:Null}" Click="BtnSides_Click" />
-        <Button x:Name="BtnDesserts" Height="50" Content="Desserts" HorizontalAlignment="Left" Margin="10,450,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="25" FontWeight="Medium" Background="{x:Null}" Foreground="Blue" BorderBrush="{x:Null}" Click="BtnDesserts_Click" />
-        <Button x:Name="BtnBreakfast" Height="50" Content="Breakfast" HorizontalAlignment="Left" Margin="10,500,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="25" FontWeight="Medium" Background="{x:Null}" Foreground="Blue" BorderBrush="{x:Null}" Click="BtnBreakfast_Click" />
-        <Button x:Name="BtnMisc" Height="50" Content="Misc." HorizontalAlignment="Left" Margin="10,550,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="25" FontWeight="Medium" Background="{x:Null}" Foreground="Blue" BorderBrush="{x:Null}" Click="BtnMisc_Click" />
+        <Button x:Name="BtnSalads" Height="50" Content="Salads" HorizontalAlignment="Left" Margin="10,50,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="25" FontWeight="Medium" Background="{x:Null}" Foreground="Blue" Click="BtnSalads_Click" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" />
+        <Button x:Name="BtnSoups" Height="50" Content="Soups" HorizontalAlignment="Left" Margin="10,100,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="25" FontWeight="Medium" Background="{x:Null}" Foreground="Blue" Click="BtnSoups_Click" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" />
+        <Button x:Name="BtnAppetizers" Height="50" Content="Appetizers" HorizontalAlignment="Left" Margin="10,150,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="25" FontWeight="Medium" Background="{x:Null}" Foreground="Blue" Click="BtnAppetizers_Click" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" />
+        <Button x:Name="BtnMeat" Height="50" Content="Meat" HorizontalAlignment="Left" Margin="10,200,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="25" FontWeight="Medium" Background="{x:Null}" Foreground="Blue" Click="BtnMeat_Click" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" />
+        <Button x:Name="BtnPoultry" Height="50" Content="Poultry" HorizontalAlignment="Left" Margin="10,250,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="25" FontWeight="Medium" Background="{x:Null}" Foreground="Blue" Click="BtnPoultry_Click" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" />
+        <Button x:Name="BtnSeafood" Height="50" Content="Seafood" HorizontalAlignment="Left" Margin="10,300,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="25" FontWeight="Medium" Background="{x:Null}" Foreground="Blue" Click="BtnSeafood_Click" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" />
+        <Button x:Name="BtnVegetables" Height="50" Content="Vegetables" HorizontalAlignment="Left" Margin="10,350,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="25" FontWeight="Medium" Background="{x:Null}" Foreground="Blue" Click="BtnVegetables_Click" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" />
+        <Button x:Name="BtnSides" Height="50" Content="Sides" HorizontalAlignment="Left" Margin="10,400,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="25" FontWeight="Medium" Background="{x:Null}" Foreground="Blue" Click="BtnSides_Click" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" />
+        <Button x:Name="BtnDesserts" Height="50" Content="Desserts" HorizontalAlignment="Left" Margin="10,450,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="25" FontWeight="Medium" Background="{x:Null}" Foreground="Blue" Click="BtnDesserts_Click" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" />
+        <Button x:Name="BtnBreakfast" Height="50" Content="Breakfast" HorizontalAlignment="Left" Margin="10,500,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="25" FontWeight="Medium" Background="{x:Null}" Foreground="Blue" Click="BtnBreakfast_Click" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" />
+        <Button x:Name="BtnMisc" Height="50" Content="Misc." HorizontalAlignment="Left" Margin="10,550,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="25" FontWeight="Medium" Background="{x:Null}" Foreground="Blue" Click="BtnMisc_Click" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" />
         <Frame x:Name="Frame" Content="Frame" Grid.RowSpan="2" Visibility="Hidden" NavigationUIVisibility="Hidden" />
     </Grid>
 </Window>
