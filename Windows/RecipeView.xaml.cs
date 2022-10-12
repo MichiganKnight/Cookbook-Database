@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Globalization;
-using System.Printing;
 using System.Resources;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -50,18 +49,6 @@ namespace Cookbook_Database.Windows
         }
 
         /// <summary>
-        /// Go back from generic recipe to the <see cref="MainWindow"/>
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void GoBackButton_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            MainWindow? Form = Application.Current.MainWindow as MainWindow;
-
-            Form.Frame.Visibility = Visibility.Collapsed;
-        }
-
-        /// <summary>
         /// Print 
         /// </summary>
         /// <param name="sender"></param>
@@ -99,7 +86,17 @@ namespace Cookbook_Database.Windows
                 FontWeight = FontWeights.Medium,
                 Foreground = Brushes.Blue,
                 HorizontalAlignment = HorizontalAlignment.Center,
-                Name = ReplaceWithWord(name)
+                Name = ReplaceWithWord(name),
+            };
+
+            label.MouseEnter += (s, e) =>
+            {
+                label.Background = Brushes.LightGray;
+            };
+
+            label.MouseLeave += (s, e) =>
+            {
+                label.Background = Brushes.White;
             };
 
             label.MouseUp += (s, e) =>
@@ -115,11 +112,10 @@ namespace Cookbook_Database.Windows
 
                         RecipePanel.Children.Clear();
 
-                        Label goBackFromImageButton = CreateGoBackButton();
+                        Properties.Settings.Default.IsImageVisible = true;
 
-                        RecipePanel.Children.Add(goBackFromImageButton);
-
-                        goBackFromImageButton.MouseUp += GoBackFromImageButton_MouseUp;
+                        MenuSeperator.Visibility = Visibility.Visible;
+                        PrintButton.Visibility = Visibility.Visible;
 
                         break;
                     }
@@ -251,12 +247,47 @@ namespace Cookbook_Database.Windows
                 default:
                     break;
             }
+        }
 
-            Label goBackButton = CreateGoBackButton();
+        /// <summary>
+        /// Go back button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void GoBackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Properties.Settings.Default.IsImageVisible == true)
+            {
+                SwitchBetweenRecipeTypes();
 
-            RecipePanel.Children.Add(goBackButton);
+                RecipeImage.ImageSource = null;
 
-            goBackButton.MouseUp += GoBackButton_MouseUp;
+                MenuSeperator.Visibility = Visibility.Collapsed;
+                PrintButton.Visibility = Visibility.Collapsed;
+
+                Properties.Settings.Default.IsImageVisible = false;
+            }
+            else
+            {
+                MainWindow? Form = Application.Current.MainWindow as MainWindow;
+
+                Form.Frame.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void PrintButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Properties.Settings.Default.IsImageVisible == true)
+            {
+                PrintImage((BitmapImage)RecipeImage.ImageSource);
+            }   
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow? Form = Application.Current.MainWindow as MainWindow;
+
+            Form.Close();
         }
     }
 }
