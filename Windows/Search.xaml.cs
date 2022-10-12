@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+
 using static Cookbook_Database.CommonFunctions;
 
 namespace Cookbook_Database.Windows
@@ -16,6 +17,8 @@ namespace Cookbook_Database.Windows
     /// </summary>
     public partial class Search : Page
     {
+        private readonly ResourceSet ResourceSet = Properties.Resources.ResourceManager.GetResourceSet(CultureInfo.CurrentCulture, true, true);
+
         public Search()
         {
             InitializeComponent();
@@ -28,7 +31,7 @@ namespace Cookbook_Database.Windows
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            DisplayRecipes();
+            CreateRecipeItems();
         }
 
         /// <summary>
@@ -64,7 +67,7 @@ namespace Cookbook_Database.Windows
 
             RecipeImage.ImageSource = null;
 
-            DisplayRecipes();
+            CreateRecipeItems();
         }
 
         /// <summary>
@@ -99,11 +102,19 @@ namespace Cookbook_Database.Windows
                     Name = ReplaceWithWord(name)
                 };
 
+                label.MouseEnter += (s, e) =>
+                {
+                    label.Background = Brushes.LightGray;
+                };
+
+                label.MouseLeave += (s, e) =>
+                {
+                    label.Background = Brushes.White;
+                };
+
                 label.MouseUp += (s, e) =>
                 {
-                    ResourceSet resourceSet = Properties.Resources.ResourceManager.GetResourceSet(CultureInfo.CurrentCulture, true, true);
-
-                    foreach (DictionaryEntry entry in resourceSet)
+                    foreach (DictionaryEntry entry in ResourceSet)
                     {
                         string name = entry.Key.ToString();
                         object resource = entry.Value;
@@ -114,11 +125,10 @@ namespace Cookbook_Database.Windows
 
                             RecipePanel.Children.Clear();
 
-                            Label goBackFromImageButton = CreateGoBackButton();
+                            Properties.Settings.Default.IsImageVisible = true;
 
-                            RecipePanel.Children.Add(goBackFromImageButton);
-
-                            goBackFromImageButton.MouseUp += GoBackFromImageButton_MouseUp;
+                            MenuSeperator.Visibility = Visibility.Visible;
+                            PrintButton.Visibility = Visibility.Visible;
 
                             break;
                         }
@@ -130,17 +140,44 @@ namespace Cookbook_Database.Windows
         }
 
         /// <summary>
-        /// Display all recipes
+        /// Go back button
         /// </summary>
-        public void DisplayRecipes()
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void GoBackButton_Click(object sender, RoutedEventArgs e)
         {
-            CreateRecipeItems();
+            if (Properties.Settings.Default.IsImageVisible == true)
+            {
+                CreateRecipeItems();
 
-            Label goBackButton = CreateGoBackButton();
+                RecipeImage.ImageSource = null;
 
-            RecipePanel.Children.Add(goBackButton);
+                MenuSeperator.Visibility = Visibility.Collapsed;
+                PrintButton.Visibility = Visibility.Collapsed;
 
-            goBackButton.MouseUp += GoBackButton_MouseUp;
+                Properties.Settings.Default.IsImageVisible = false;
+            }
+            else
+            {
+                MainWindow? Form = Application.Current.MainWindow as MainWindow;
+
+                Form.Frame.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void PrintButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Properties.Settings.Default.IsImageVisible == true)
+            {
+                PrintImage((BitmapImage)RecipeImage.ImageSource);
+            }
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow? Form = Application.Current.MainWindow as MainWindow;
+
+            Form.Close();
         }
     }
 }

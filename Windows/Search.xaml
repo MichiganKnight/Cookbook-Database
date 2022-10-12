@@ -8,8 +8,18 @@
       Title="Search" Background="White" Loaded="Page_Loaded" KeyDown="Page_KeyDown">
 
     <Grid>
+        <DockPanel Width="250" LastChildFill="False" VerticalAlignment="Top" HorizontalAlignment="Left" Panel.ZIndex="1">
+            <Menu x:Name="RecipeMenu" DockPanel.Dock="Top" FontSize="18">
+                <MenuItem Header="_File" Cursor="Hand">
+                    <MenuItem Name="PrintButton" Header="_Print" Cursor="Hand" Click="PrintButton_Click" />
+                    <Separator Name="MenuSeperator" />
+                    <MenuItem Name="ExitButton" Header="_Exit" Cursor="Hand" Click="ExitButton_Click" />
+                </MenuItem>
+                <MenuItem Name="GoBackButton" Header="_Go Back" Cursor="Hand" Click="GoBackButton_Click" />
+            </Menu>
+        </DockPanel>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-            <StackPanel Name="RecipePanel" >
+            <StackPanel Name="RecipePanel">
                 <StackPanel.Background>
                     <ImageBrush x:Name="RecipeImage" Stretch="Uniform"/>
                 </StackPanel.Background>
