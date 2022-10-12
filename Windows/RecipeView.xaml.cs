@@ -78,35 +78,37 @@ namespace Cookbook_Database.Windows
         {
             string name = Regex.Replace($"{recipe}Button", @"[^a-zA-Z0-9]+", "");
 
-            Label label = new()
+            Button button = new()
             {
                 Content = recipe,
                 Cursor = Cursors.Hand,
                 FontSize = 25,
                 FontWeight = FontWeights.Medium,
+                Background = null,
                 Foreground = Brushes.Blue,
+                Height = 50,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 Name = ReplaceWithWord(name),
             };
 
-            label.MouseEnter += (s, e) =>
+            button.MouseEnter += (s, e) =>
             {
-                label.Background = Brushes.LightGray;
+                button.Background = Brushes.LightGray;
             };
 
-            label.MouseLeave += (s, e) =>
+            button.MouseLeave += (s, e) =>
             {
-                label.Background = Brushes.White;
+                button.Background = Brushes.White;
             };
 
-            label.MouseUp += (s, e) =>
+            button.MouseUp += (s, e) =>
             {
                 foreach (DictionaryEntry entry in ResourceSet)
                 {
                     string name = entry.Key.ToString();
                     object resource = entry.Value;
 
-                    if ($"{Regex.Replace(ReplaceWithWord(name), @"[^a-zA-Z]+", "")}Button" == label.Name)
+                    if ($"{Regex.Replace(ReplaceWithWord(name), @"[^a-zA-Z]+", "")}Button" == button.Name)
                     {
                         RecipeImage.ImageSource = LoadImage((byte[])resource);
 
@@ -122,7 +124,7 @@ namespace Cookbook_Database.Windows
                 }
             };
 
-            RecipePanel.Children.Add(label);
+            RecipePanel.Children.Add(button);
         }
 
         /// <summary>
