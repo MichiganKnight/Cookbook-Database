@@ -56,5 +56,17 @@ namespace Cookbook_Database.Properties {
                 this["RecipeType"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsImageVisible {
+            get {
+                return ((bool)(this["IsImageVisible"]));
+            }
+            set {
+                this["IsImageVisible"] = value;
+            }
+        }
     }
 }
