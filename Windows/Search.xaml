@@ -10,12 +10,12 @@
     <Grid>
         <DockPanel Width="250" LastChildFill="False" VerticalAlignment="Top" HorizontalAlignment="Left" Panel.ZIndex="1">
             <Menu x:Name="RecipeMenu" DockPanel.Dock="Top" FontSize="18">
-                <MenuItem Header="_File" Cursor="Hand">
-                    <MenuItem Name="PrintButton" Header="_Print" Cursor="Hand" Click="PrintButton_Click" />
+                <MenuItem Header="File" Cursor="Hand">
+                    <MenuItem Name="PrintButton" Header="Print" Cursor="Hand" Click="PrintButton_Click" />
                     <Separator Name="MenuSeperator" />
-                    <MenuItem Name="ExitButton" Header="_Exit" Cursor="Hand" Click="ExitButton_Click" />
+                    <MenuItem Name="ExitButton" Header="Exit" Cursor="Hand" Click="ExitButton_Click" />
                 </MenuItem>
-                <MenuItem Name="GoBackButton" Header="_Go Back" Cursor="Hand" Click="GoBackButton_Click" />
+                <MenuItem Name="GoBackButton" Header="Go Back" Cursor="Hand" Click="GoBackButton_Click" />
             </Menu>
         </DockPanel>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
