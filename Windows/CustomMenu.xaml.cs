@@ -88,7 +88,8 @@ namespace Cookbook_Database.Windows
         /// <param name="recipeType">Recipe to import</param>
         private void ImportRecipe(string recipeType)
         {
-            DropdownButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#333");
+            MessageBox.Show("Function Not Yet Implemented");
+            /*DropdownButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#333");
             DropdownButton.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#e5e5e5");
 
             Dropdown.IsOpen = false;
@@ -106,14 +107,14 @@ namespace Cookbook_Database.Windows
             if (result == true)
             {
                 string filename = fileDialog.FileName;
-            }
+            }*/
         }
 
         #endregion
 
         private void RemoveRecipe_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Removing Recipes Is Not Yet Implemented");
+            MessageBox.Show("Function Not Yet Implemented");
         }
 
         private void DropdownButton_MouseUp(object sender, MouseButtonEventArgs e)
