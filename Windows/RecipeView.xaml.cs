@@ -101,7 +101,7 @@ namespace Cookbook_Database.Windows
                 button.Background = Brushes.White;
             };
 
-            button.MouseUp += (s, e) =>
+            button.Click += (s, e) =>
             {
                 foreach (DictionaryEntry entry in ResourceSet)
                 {
