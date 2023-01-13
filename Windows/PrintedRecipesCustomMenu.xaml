@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="Cookbook_Database.Windows.CustomMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="1280"
+             FontFamily="Verdana"
+             FontSize="18">
+    <Grid>
+        <Label Name="CooksCountryRecipesButton" Background="{x:Null}" Foreground="#e5e5e5" Height="50" Width="220" Margin="0,0,0,0" Content="Cooks Country Recipes" FontSize="18" Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MouseEnter="CooksCountryRecipesButton_MouseEnter" MouseLeave="CooksCountryRecipesButton_MouseLeave" MouseUp="CooksCountryRecipesButton_MouseUp" />
+        <TextBox x:Name="SearchInput" Background="White" Foreground="LightGray" SelectionBrush="LightGray" Height="51" Width="420" Margin="0,-1,50,0" Text="Search..." FontSize="18" HorizontalAlignment="Right" VerticalAlignment="Top" VerticalContentAlignment="Center" GotFocus="SearchInput_GotFocus" LostFocus="SearchInput_LostFocus" KeyDown="SearchInput_KeyDown" />
+        <Border x:Name="Submit" Background="#e5e5e5" Height="50" Width="50" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Top" MouseEnter="Submit_MouseEnter" MouseLeave="Submit_MouseLeave" MouseUp="Submit_MouseUp">
+            <Image Source="../Resources/Search.png" Stretch="Fill" />
+        </Border>
+    </Grid>
+</UserControl>
+
+    
