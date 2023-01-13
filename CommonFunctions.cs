@@ -171,13 +171,12 @@ namespace Cookbook_Database
                 });
             }
 
-            string printerName = "HPCAE19C (HP OfficeJet Pro 8710)";
-
             LocalPrintServer printServer = new();
-            PrintDialog printDialog = new();
-            PrintQueue printQueue = printServer.GetPrintQueue(printerName);
-
-            printDialog.PrintQueue = printQueue;
+            PrintQueue? DefaultPrinter = printServer.DefaultPrintQueue;
+            PrintDialog printDialog = new()
+            {
+                PrintQueue = DefaultPrinter
+            };
 
             if (printDialog.ShowDialog() == true)
             {
