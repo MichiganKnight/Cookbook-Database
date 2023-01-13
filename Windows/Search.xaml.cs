@@ -50,7 +50,7 @@ namespace Cookbook_Database.Windows
 
             if (e.Key == Key.X)
             {
-                MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+                PrintedRecipes mainWindow = Application.Current.MainWindow as PrintedRecipes;
 
                 mainWindow.Close();
             }
@@ -77,7 +77,7 @@ namespace Cookbook_Database.Windows
         /// <param name="e"></param>
         private void GoBackButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            MainWindow? Form = Application.Current.MainWindow as MainWindow;
+            PrintedRecipes? Form = Application.Current.MainWindow as PrintedRecipes;
 
             Form.Frame.Visibility = Visibility.Collapsed;
         }
@@ -161,7 +161,7 @@ namespace Cookbook_Database.Windows
             }
             else
             {
-                MainWindow? Form = Application.Current.MainWindow as MainWindow;
+                PrintedRecipes? Form = Application.Current.MainWindow as PrintedRecipes;
 
                 Form.Frame.Visibility = Visibility.Collapsed;
             }
@@ -177,7 +177,7 @@ namespace Cookbook_Database.Windows
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow? Form = Application.Current.MainWindow as MainWindow;
+            PrintedRecipes? Form = Application.Current.MainWindow as PrintedRecipes;
 
             Form.Close();
         }

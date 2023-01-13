@@ -25,7 +25,7 @@ namespace Cookbook_Database.Windows
 
         private void PrintedRecipesButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            MainWindow Form = Application.Current.Windows[0] as MainWindow;
+            PrintedRecipes Form = Application.Current.Windows[0] as PrintedRecipes;
 
             Form.Frame.Visibility = Visibility.Collapsed;
         }
@@ -81,7 +81,7 @@ namespace Cookbook_Database.Windows
             {
                 Properties.Settings.Default.SearchString = SearchInput.Text;
 
-                MainWindow? Form = Application.Current.Windows[0] as MainWindow;
+                PrintedRecipes? Form = Application.Current.Windows[0] as PrintedRecipes;
 
                 Form.Frame.Visibility = Visibility.Visible;
                 Form.Frame.NavigationService.Navigate(new Search());

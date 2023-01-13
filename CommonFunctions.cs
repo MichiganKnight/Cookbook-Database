@@ -101,7 +101,7 @@ namespace Cookbook_Database
                     break;
             }
 
-            MainWindow Form = Application.Current.Windows[0] as MainWindow;
+            PrintedRecipes Form = Application.Current.Windows[0] as PrintedRecipes;
 
             Form.Frame.Visibility = Visibility.Visible;
             Form.Frame.NavigationService.Navigate(new RecipeView());
