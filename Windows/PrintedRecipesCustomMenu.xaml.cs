@@ -10,11 +10,11 @@ namespace Cookbook_Database.Windows
     /// <summary>
     /// Interaction logic for UserControlMenuItem.xaml
     /// </summary>
-    public partial class CustomMenu : UserControl
+    public partial class PrintedRecipesCustomMenu : UserControl
     {
         private readonly List<string>? Recipes = new();
 
-        public CustomMenu()
+        public PrintedRecipesCustomMenu()
         {
             InitializeComponent();
 

@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
         <materialDesign:ColorZone>
             <Grid HorizontalAlignment="Stretch" Grid.Row="1" Background="#FF333333">
-                <controls:CustomMenu />
+                <controls:PrintedRecipesCustomMenu />
             </Grid>
         </materialDesign:ColorZone>
         <Label Content="Cookbook Database" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Margin="0,10,0,0" Grid.Row="1" />
