@@ -1,46 +1,50 @@
 ﻿using System.Collections.Generic;
+
 using static Cookbook_Database.SqLiteDataAccess;
 
 namespace Cookbook_Database.DatabaseHandler
 {
-    public class AllCooksCountryRecipeModel
+    public class YearModel
     {
-        public int Year { get; set; }
-        public string? Issue { get; set; }
-        public string? Name { get; set; }
-        public string? Servings { get; set; }
-        public string? Description { get; set; }
+        public string? Year { get; set; }
 
-        public static List<string> AllCooksCountryRecipeModelToString()
+        public static List<string> YearModelToString()
         {
-            List<AllCooksCountryRecipeModel> recipeModels = new();
+            List<YearModel> recipeModels = new();
 
-            recipeModels = LoadAllCooksCountryRecipes();
+            recipeModels = LoadYears();
 
             List<string> recipeStrings = new();
 
-            foreach (AllCooksCountryRecipeModel recipeModel in recipeModels)
+            foreach (YearModel recipeModel in recipeModels)
             {
-                recipeStrings.Add(recipeModel.Year.ToString());
-
-                if (!string.IsNullOrEmpty(recipeModel.Issue))
+                if (!string.IsNullOrEmpty(recipeModel.Year))
                 {
-                    recipeStrings.Add(recipeModel.Issue);
+                    recipeStrings.Add(recipeModel.Year);
                 }
+            }
 
-                if (!string.IsNullOrEmpty(recipeModel.Name))
-                {
-                    recipeStrings.Add(recipeModel.Name);
-                }
+            return recipeStrings;
+        }
+    }
 
-                if (!string.IsNullOrEmpty(recipeModel.Servings))
-                {
-                    recipeStrings.Add(recipeModel.Servings);
-                }
+    public class IssueModel
+    {
+        public string? Issue { get; set; }
 
-                if (recipeModel.Description != null)
+        public static List<string> IssueModelToString()
+        {
+            List<IssueModel> issueModels = new();
+
+            issueModels = LoadIssues();
+
+            List<string> recipeStrings = new();
+
+            foreach (IssueModel issueModel in issueModels)
+            {
+                if (!string.IsNullOrEmpty(issueModel.Issue))
                 {
-                    recipeStrings.Add(recipeModel.Description);
+                    recipeStrings.Add(issueModel.Issue);
                 }
             }
 
@@ -80,7 +84,7 @@ namespace Cookbook_Database.DatabaseHandler
 
     public class InstructionModel
     {
-        public int Step { get; set; }
+        public string? Step { get; set; }
         public string? Description { get; set; }
 
         public static List<string> InstructionModelToString()
@@ -93,7 +97,10 @@ namespace Cookbook_Database.DatabaseHandler
 
             foreach (InstructionModel instructionModel in instructionsModels)
             {
-                recipeStrings.Add(instructionModel.Step.ToString());
+                if (!string.IsNullOrEmpty(instructionModel.Step))
+                {
+                    recipeStrings.Add(instructionModel.Step);
+                }
 
                 if (!string.IsNullOrEmpty(instructionModel.Description))
                 {
