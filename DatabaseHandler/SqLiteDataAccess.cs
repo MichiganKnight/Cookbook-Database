@@ -56,11 +56,22 @@ namespace Cookbook_Database
         {
             using IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString());
 
-            var issue = cnn.Query<IssueModel>($"select Issue from Recipe order by Year asc", new DynamicParameters());
+            var issue = cnn.Query<IssueModel>($"select Issue from Recipe order by Id asc", new DynamicParameters());
 
             List<IssueModel>? recipeModels = issue.ToList();
 
             return recipeModels;
+        }
+
+        public static List<NameModel> LoadNames()
+        {
+            using IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString());
+
+            var name = cnn.Query<NameModel>("select Name from Recipe order by Id asc" , new DynamicParameters());
+
+            List<NameModel>? nameModels = name.ToList();
+
+            return nameModels;
         }
 
         public static List<IngredientModel> LoadIngredients()
