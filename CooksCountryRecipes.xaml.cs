@@ -14,6 +14,9 @@ namespace Cookbook_Database
     /// </summary>
     public partial class CooksCountryRecipes : Page
     {
+        bool areIssuesDisplayed = false;
+        bool areNamesDisplayed = false;
+
         public CooksCountryRecipes()
         {
             InitializeComponent();
@@ -32,6 +35,30 @@ namespace Cookbook_Database
             foreach (string issue in IssueModel.IssueModelToString())
             {
                 CreateButtons(issue);
+            }
+
+            areIssuesDisplayed = true;
+        }
+
+        private string DisplayNames()
+        {
+            string returnValue = "";
+
+            foreach (string name in NameModel.NameModelToString())
+            {
+                CreateButtons(name);
+
+                returnValue = name;
+            }
+
+            return returnValue;
+        }
+
+        private void DisplayRecipes()
+        {
+            foreach (string name in NameModel.NameModelToString())
+            {
+                CreateLabels(name);
             }
         }
 
@@ -67,10 +94,52 @@ namespace Cookbook_Database
 
             button.Click += (s, e) =>
             {
-                RecipePanel.Children.Remove(button);
+                RecipePanel.Children.Clear();
 
-                DisplayIssues();
+                if (!areIssuesDisplayed)
+                {
+                    DisplayIssues();
+                }
+                else
+                {
+                    string temp = DisplayNames();
+
+                    areNamesDisplayed = true;
+
+                    if (!areNamesDisplayed)
+                    {
+                        MessageBox.Show($"Button Text: {button.Content}\nDisplayNames Text: {temp}");
+
+                        if (temp == button.Content)
+                        {
+                            MessageBox.Show("true");
+
+                            DisplayRecipes();
+                        }
+                    }
+                    
+                }
             };
+        }
+
+        private void CreateLabels(string text)
+        {
+            string name = Regex.Replace($"{text}Label", @"[^a-zA-Z0-9]+", "");
+
+            Label label = new()
+            {
+                Content = text.Replace("Label", ""),
+                FontSize = 25,
+                FontWeight = FontWeights.Medium,
+                Background = null,
+                Foreground = Brushes.Black,
+                Height = 50,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Name = ReplaceWithWord(name),
+                Margin = new Thickness(10, 0, 0, 0)
+            };
+
+            RecipePanel.Children.Add(label);
         }
     }
 }
