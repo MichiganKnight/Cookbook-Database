@@ -87,7 +87,7 @@ namespace Cookbook_Database.Windows
         /// </summary>
         private void CreateRecipeItems()
         {
-            foreach (string recipe in AllRecipeModel.AllRecipeModelToString())
+            foreach (string recipe in AllPrintedRecipeModel.AllPrintedRecipeModelToString())
             {
                 string name = Regex.Replace($"{recipe}Button", @"[^a-zA-Z0-9]+", "");
 
