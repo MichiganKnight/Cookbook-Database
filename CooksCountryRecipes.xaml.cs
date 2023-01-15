@@ -17,9 +17,9 @@ namespace Cookbook_Database
             InitializeComponent();
         }
 
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            
+
         }
     }
 }

@@ -5,6 +5,8 @@ namespace Cookbook_Database.DatabaseHandler
 {
     public class AllCooksCountryRecipeModel
     {
+        public int Year { get; set; }
+        public string? Issue { get; set; }
         public string? Name { get; set; }
         public string? Servings { get; set; }
         public string? Description { get; set; }
@@ -19,6 +21,13 @@ namespace Cookbook_Database.DatabaseHandler
 
             foreach (AllCooksCountryRecipeModel recipeModel in recipeModels)
             {
+                recipeStrings.Add(recipeModel.Year.ToString());
+
+                if (!string.IsNullOrEmpty(recipeModel.Issue))
+                {
+                    recipeStrings.Add(recipeModel.Issue);
+                }
+
                 if (!string.IsNullOrEmpty(recipeModel.Name))
                 {
                     recipeStrings.Add(recipeModel.Name);
