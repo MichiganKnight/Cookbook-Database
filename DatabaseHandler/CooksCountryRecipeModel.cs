@@ -52,6 +52,30 @@ namespace Cookbook_Database.DatabaseHandler
         }
     }
 
+    public class NameModel
+    {
+        public string? Name { get; set; }
+
+        public static List<string> NameModelToString()
+        {
+            List<NameModel> nameModels = new();
+
+            nameModels = LoadNames();
+
+            List<string> recipeStrings = new();
+
+            foreach (NameModel nameModel in nameModels)
+            {
+                if (!string.IsNullOrEmpty(nameModel.Name))
+                {
+                    recipeStrings.Add(nameModel.Name);
+                }
+            }
+
+            return recipeStrings;
+        }
+    }
+
     public class IngredientModel
     {
         public string? Quantity { get; set; }
