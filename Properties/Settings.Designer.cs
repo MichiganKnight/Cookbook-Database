@@ -39,9 +39,9 @@ namespace Cookbook_Database.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\Databases\\RecipeDatabase.db;Version=3;")]
-        public string ConnectionString {
+        public string PrintedRecipeConnectionString {
             get {
-                return ((string)(this["ConnectionString"]));
+                return ((string)(this["PrintedRecipeConnectionString"]));
             }
         }
         
@@ -66,6 +66,16 @@ namespace Cookbook_Database.Properties {
             }
             set {
                 this["IsImageVisible"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\Databases\\CooksCountryDatabase.db;Version=3;")]
+        public string CooksCountryRecipeConnectionString {
+            get {
+                return ((string)(this["CooksCountryRecipeConnectionString"]));
             }
         }
     }
