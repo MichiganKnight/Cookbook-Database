@@ -3,9 +3,8 @@ using static Cookbook_Database.SqLiteDataAccess;
 
 namespace Cookbook_Database
 {
-    public class AllRecipeModel
+    public class AllPrintedRecipeModel
     {
-        public int Id { get; set; }
         public string? Salad { get; set; }
         public string? Soup { get; set; }
         public string? Appetizer { get; set; }
@@ -24,15 +23,15 @@ namespace Cookbook_Database
         /// <returns>
         /// List of strings
         /// </returns>
-        public static List<string> AllRecipeModelToString()
+        public static List<string> AllPrintedRecipeModelToString()
         {
-            List<AllRecipeModel> recipeModels = new();
+            List<AllPrintedRecipeModel> recipeModels = new();
 
-            recipeModels = LoadAllRecipes();
+            recipeModels = LoadAllPrintedRecipes();
 
             List<string> recipeStrings = new();
 
-            foreach (AllRecipeModel recipe in recipeModels)
+            foreach (AllPrintedRecipeModel recipe in recipeModels)
             {
                 if (!string.IsNullOrEmpty(recipe.Salad))
                 {
@@ -96,7 +95,6 @@ namespace Cookbook_Database
 
     public class SaladModel
     {
-        public int Id { get; set; }
         public string? Salad { get; set; }
 
         public static List<string> SaladRecipeModelToString()
@@ -121,7 +119,6 @@ namespace Cookbook_Database
 
     public class SoupModel
     {
-        public int Id { get; set; }
         public string? Soup { get; set; }
 
         public static List<string> SoupRecipeModelToString()
@@ -146,7 +143,6 @@ namespace Cookbook_Database
 
     public class AppetizerModel
     {
-        public int Id { get; set; }
         public string? Appetizer { get; set; }
 
         public static List<string> AppetizerRecipeModelToString()
@@ -171,7 +167,6 @@ namespace Cookbook_Database
 
     public class MeatModel
     {
-        public int Id { get; set; }
         public string? Meat { get; set; }
 
         public static List<string> MeatRecipeModelToString()
@@ -196,7 +191,6 @@ namespace Cookbook_Database
 
     public class PoultryModel
     {
-        public int Id { get; set; }
         public string? Poultry { get; set; }
 
         public static List<string> PoultryRecipeModelToString()
@@ -221,7 +215,6 @@ namespace Cookbook_Database
 
     public class SeafoodModel
     {
-        public int Id { get; set; }
         public string? Seafood { get; set; }
 
         public static List<string> SeafoodRecipeModelToString()
@@ -246,7 +239,6 @@ namespace Cookbook_Database
 
     public class VegetableModel
     {
-        public int Id { get; set; }
         public string? Vegetable { get; set; }
 
         public static List<string> VegetableRecipeModelToString()
@@ -271,7 +263,6 @@ namespace Cookbook_Database
 
     public class SideModel
     {
-        public int Id { get; set; }
         public string? Side { get; set; }
 
         public static List<string> SideRecipeModelToString()
@@ -296,7 +287,6 @@ namespace Cookbook_Database
 
     public class DessertModel
     {
-        public int Id { get; set; }
         public string? Dessert { get; set; }
 
         public static List<string> DessertRecipeModelToString()
@@ -321,7 +311,6 @@ namespace Cookbook_Database
 
     public class BreakfastModel
     {
-        public int Id { get; set; }
         public string? Breakfast { get; set; }
 
         public static List<string> BreakfastRecipeModelToString()
@@ -346,7 +335,6 @@ namespace Cookbook_Database
 
     public class MiscModel
     {
-        public int Id { get; set; }
         public string? Misc { get; set; }
 
         public static List<string> MiscRecipeModelToString()
