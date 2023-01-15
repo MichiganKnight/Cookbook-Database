@@ -20,7 +20,7 @@ namespace Cookbook_Database.Windows
 
             SearchInput.TextChanged += SearchInput_TextChanged;
 
-            Recipes.AddRange(AllRecipeModel.AllRecipeModelToString());
+            Recipes.AddRange(AllPrintedRecipeModel.AllPrintedRecipeModelToString());
         }
 
         private void PrintedRecipesButton_MouseUp(object sender, MouseButtonEventArgs e)
