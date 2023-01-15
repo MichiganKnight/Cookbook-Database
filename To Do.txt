@@ -1,0 +1,6 @@
+﻿Update names throughout code
+Add name of recipe to image section of RecipeView and Search
+Split up SqLiteDataAccess into smaller files
+Refine and fix CooksCountryRecipeModel
+Make a nicer looking title bar
+Maybe someday transitiion entire project to a MVVM approach
