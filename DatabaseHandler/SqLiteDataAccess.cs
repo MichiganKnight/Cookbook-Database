@@ -41,25 +41,51 @@ namespace Cookbook_Database
             return recipeModels;
         }
 
-        public static List<AllCooksCountryRecipeModel> LoadAllCooksCountryRecipes()
+        public static List<YearModel> LoadYears()
         {
             using IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString());
 
-            var name = cnn.Query<AllCooksCountryRecipeModel>($"select Name from Recipe where Recipe like '%{Properties.Settings.Default.SearchString}%' order by Name asc", new DynamicParameters());
+            var year = cnn.Query<YearModel>($"select Year from Recipe order by Year asc", new DynamicParameters());
 
-            List<AllCooksCountryRecipeModel>? recipeModels = name.ToList();
+            List<YearModel>? recipeModels = year.ToList();
+
+            return recipeModels;
+        }
+
+        public static List<IssueModel> LoadIssues()
+        {
+            using IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString());
+
+            var issue = cnn.Query<IssueModel>($"select Issue from Recipe order by Year asc", new DynamicParameters());
+
+            List<IssueModel>? recipeModels = issue.ToList();
 
             return recipeModels;
         }
 
         public static List<IngredientModel> LoadIngredients()
         {
-            return null;
+            using IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString());
+
+            var ingredient = cnn.Query<IngredientModel>($"select * from Ingredients order by Name asc", new DynamicParameters());
+
+            List<IngredientModel>? ingredientModels = ingredient.ToList();
+
+            return ingredientModels;
         }
 
         public static List<InstructionModel> LoadInstructions()
         {
-            return null;
+            using IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString());
+
+            var step = cnn.Query<InstructionModel>($"select Step from Instructions order by Step asc", new DynamicParameters());
+            var description = cnn.Query<InstructionModel>($"select Description from Instructions order by Step asc", new DynamicParameters());
+
+            List<InstructionModel>? instructionModels = step
+                .Union(description)
+                .ToList();
+
+            return instructionModels;
         }
 
         /// <summary>
