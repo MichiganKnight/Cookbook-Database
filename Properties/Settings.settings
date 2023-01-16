@@ -25,5 +25,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=.\Databases\CooksCountryDatabase.db;Version=3;</Value>
     </Setting>
+    <Setting Name="CooksCountryRecipeToDisplay" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

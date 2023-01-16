@@ -78,5 +78,17 @@ namespace Cookbook_Database.Properties {
                 return ((string)(this["CooksCountryRecipeConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CooksCountryRecipeToDisplay {
+            get {
+                return ((string)(this["CooksCountryRecipeToDisplay"]));
+            }
+            set {
+                this["CooksCountryRecipeToDisplay"] = value;
+            }
+        }
     }
 }
