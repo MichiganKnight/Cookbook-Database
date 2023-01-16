@@ -172,26 +172,44 @@ namespace Cookbook_Database.DatabaseHandler
         }
     }
 
-    public class InstructionModel
+    public class StepModel
     {
         public string? Step { get; set; }
+
+        public static List<string> StepModelToString()
+        {
+            List<StepModel> stepModels = new();
+
+            stepModels = LoadSteps();
+
+            List<string> recipeStrings = new();
+
+            foreach (StepModel stepModel in stepModels)
+            {
+                if (!string.IsNullOrEmpty(stepModel.Step))
+                {
+                    recipeStrings.Add(stepModel.Step);
+                }
+            }
+
+            return recipeStrings;
+        }
+    }
+
+    public class InstructionModel
+    {
         public string? Description { get; set; }
 
         public static List<string> InstructionModelToString()
         {
             List<InstructionModel> instructionsModels = new();
 
-            //instructionsModels = LoadInstructions();
+            instructionsModels = LoadInstructions();
 
             List<string> recipeStrings = new();
 
             foreach (InstructionModel instructionModel in instructionsModels)
             {
-                if (!string.IsNullOrEmpty(instructionModel.Step))
-                {
-                    recipeStrings.Add(instructionModel.Step);
-                }
-
                 if (!string.IsNullOrEmpty(instructionModel.Description))
                 {
                     recipeStrings.Add(instructionModel.Description);
