@@ -79,7 +79,7 @@ namespace Cookbook_Database
         {
             using IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString());
 
-            var servings = cnn.Query<ServingsModel>($"select Servings from Recipe where Recipe like '%{Settings.Default.CooksCountryRecipeToDisplay}%' order by Id asc", new DynamicParameters());
+            var servings = cnn.Query<ServingsModel>($"select Servings from Recipe where Name like '%{Settings.Default.CooksCountryRecipeToDisplay}%' order by Id asc", new DynamicParameters());
 
             List<ServingsModel>? recipeModels = servings.ToList();
 
@@ -90,36 +90,33 @@ namespace Cookbook_Database
         {
             using IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString());
 
-            var description = cnn.Query<DescriptionModel>($"select Description from Recipe where Recipe like '%{Settings.Default.CooksCountryRecipeToDisplay}%' order by Ud asc", new DynamicParameters());
+            var description = cnn.Query<DescriptionModel>($"select Description from Recipe where Name like '%{Settings.Default.CooksCountryRecipeToDisplay}%' order by Id asc", new DynamicParameters());
 
             List<DescriptionModel>? recipeModels = description.ToList();
 
             return recipeModels;
         }
 
-        public static List<IngredientModel> LoadIngredients()
+        public static List<QuantityModel> LoadQuantities()
         {
             using IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString());
 
-            var ingredient = cnn.Query<IngredientModel>($"select * from Ingredients order by Name asc", new DynamicParameters());
+            var quantity = cnn.Query<QuantityModel>($"select Quantity from Ingredients where RecipeID like '%1%' order by Id asc", new DynamicParameters());
 
-            List<IngredientModel>? ingredientModels = ingredient.ToList();
+            List<QuantityModel>? recipeModels = quantity.ToList();
 
-            return ingredientModels;
+            return recipeModels;
         }
 
-        public static List<InstructionModel> LoadInstructions()
+        public static List<IngredientNameModel> LoadIngredientNames()
         {
             using IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString());
 
-            var step = cnn.Query<InstructionModel>($"select Step from Instructions order by Step asc", new DynamicParameters());
-            var description = cnn.Query<InstructionModel>($"select Description from Instructions order by Step asc", new DynamicParameters());
+            var ingredients = cnn.Query<IngredientNameModel>($"select Name from Ingredients where RecipeID like '%1%' order by Id asc", new DynamicParameters());
 
-            List<InstructionModel>? instructionModels = step
-                .Union(description)
-                .ToList();
+            List<IngredientNameModel>? recipeModels = ingredients.ToList();
 
-            return instructionModels;
+            return recipeModels;
         }
 
         /// <summary>
