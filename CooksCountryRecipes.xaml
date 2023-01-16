@@ -29,7 +29,7 @@
         </materialDesign:ColorZone>
         <Label Name="TitleName" Content="Cookbook Database" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="32" FontWeight="Bold" Margin="0,10,0,0" Grid.Row="1" />
         <Label Name="SubtitleName" Content="Cooks Country Recipes" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="28" FontWeight="Bold" Margin="0,50,0,0" Grid.Row="1" />
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="2">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="2">
             <StackPanel Name="RecipePanel" />
         </ScrollViewer>
         <Frame x:Name="Frame" Content="Frame" Grid.RowSpan="2" Visibility="Hidden" NavigationUIVisibility="Hidden" />
