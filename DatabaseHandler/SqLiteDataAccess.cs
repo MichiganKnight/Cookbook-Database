@@ -68,7 +68,7 @@ namespace Cookbook_Database
         {
             using IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString());
 
-            var name = cnn.Query<NameModel>($"select Name from Recipe order by Id asc", new DynamicParameters());
+            var name = cnn.Query<NameModel>($"select Name from Recipe where Name like '%{Settings.Default.CooksCountryRecipeToDisplay}%' order by Id asc", new DynamicParameters());
 
             List<NameModel>? nameModels = name.ToList();
 
@@ -117,6 +117,28 @@ namespace Cookbook_Database
             List<IngredientNameModel>? recipeModels = ingredients.ToList();
 
             return recipeModels;
+        }
+
+        public static List<StepModel> LoadSteps()
+        {
+            using IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString());
+
+            var steps = cnn.Query<StepModel>($"select Step from Instructions where RecipeID like '%1%' order by Id asc", new DynamicParameters());
+
+            List<StepModel>? stepModels = steps.ToList();
+
+            return stepModels;
+        }
+
+        public static List<InstructionModel> LoadInstructions()
+        {
+            using IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString());
+
+            var instructions = cnn.Query<InstructionModel>($"select Description from Instructions where RecipeID like '%1%' order by Id asc", new DynamicParameters());
+
+            List<InstructionModel>? instructionModels = instructions.ToList();
+
+            return instructionModels;
         }
 
         /// <summary>
