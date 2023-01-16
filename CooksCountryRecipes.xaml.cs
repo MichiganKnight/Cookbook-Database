@@ -1,4 +1,6 @@
 ﻿using Cookbook_Database.DatabaseHandler;
+using Cookbook_Database.Properties;
+using Cookbook_Database.Windows;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,8 +16,7 @@ namespace Cookbook_Database
     /// </summary>
     public partial class CooksCountryRecipes : Page
     {
-        bool areIssuesDisplayed = false;
-        bool areNamesDisplayed = false;
+        int numberOfClicks = 0;
 
         public CooksCountryRecipes()
         {
@@ -36,29 +37,14 @@ namespace Cookbook_Database
             {
                 CreateButtons(issue);
             }
-
-            areIssuesDisplayed = true;
         }
 
-        private string DisplayNames()
+        private void DisplayNames()
         {
-            string returnValue = "";
 
             foreach (string name in NameModel.NameModelToString())
             {
                 CreateButtons(name);
-
-                returnValue = name;
-            }
-
-            return returnValue;
-        }
-
-        private void DisplayRecipes()
-        {
-            foreach (string name in NameModel.NameModelToString())
-            {
-                CreateLabels(name);
             }
         }
 
@@ -96,50 +82,29 @@ namespace Cookbook_Database
             {
                 RecipePanel.Children.Clear();
 
-                if (!areIssuesDisplayed)
+                numberOfClicks++;
+
+                switch (numberOfClicks)
                 {
-                    DisplayIssues();
-                }
-                else
-                {
-                    string temp = DisplayNames();
+                    case 1:
+                        DisplayIssues();
 
-                    areNamesDisplayed = true;
+                        break;
+                    case 2:
+                        DisplayNames();
+                        
+                        break;
+                    case 3:
+                        Settings.Default.CooksCountryRecipeToDisplay = button.Content.ToString();
 
-                    if (!areNamesDisplayed)
-                    {
-                        MessageBox.Show($"Button Text: {button.Content}\nDisplayNames Text: {temp}");
+                        Frame.Visibility = Visibility.Visible;
+                        Frame.NavigationService.Navigate(new CooksCountryRecipeView());
 
-                        if (temp == button.Content)
-                        {
-                            MessageBox.Show("true");
-
-                            DisplayRecipes();
-                        }
-                    }
-                    
+                        break;
+                    default:
+                        break;
                 }
             };
-        }
-
-        private void CreateLabels(string text)
-        {
-            string name = Regex.Replace($"{text}Label", @"[^a-zA-Z0-9]+", "");
-
-            Label label = new()
-            {
-                Content = text.Replace("Label", ""),
-                FontSize = 25,
-                FontWeight = FontWeights.Medium,
-                Background = null,
-                Foreground = Brushes.Black,
-                Height = 50,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                Name = ReplaceWithWord(name),
-                Margin = new Thickness(10, 0, 0, 0)
-            };
-
-            RecipePanel.Children.Add(label);
         }
     }
 }
