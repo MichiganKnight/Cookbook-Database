@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
-      d:DesignHeight="720" d:DesignWidth="1280"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="RecipeView" Background="White" Loaded="Page_Loaded">
 
     <Grid>
@@ -16,8 +16,30 @@
                 <MenuItem Name="GoBackButton" Header="Go Back" Cursor="Hand" Click="GoBackButton_Click" />
             </Menu>
         </DockPanel>
-        <ScrollViewer VerticalScrollBarVisibility="Visible" Height="720">
-            <StackPanel Name="RecipePanel" Orientation="Vertical" />
+        <ScrollViewer VerticalScrollBarVisibility="Visible" Height="1080">
+            <StackPanel>
+                <StackPanel Name="DescriptionPanel">
+                    <StackPanel Name="ServingsPanel">
+                        <StackPanel Name="NamePanel" />
+                    </StackPanel>
+                </StackPanel>
+                <Grid HorizontalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Name="QuantityPanel" Grid.Column="0" Orientation="Vertical" />
+                    <StackPanel Name="IngredientPanel" Grid.Column="1" Orientation="Vertical" />
+                </Grid>
+                <Grid HorizontalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Name="StepPanel" Grid.Column="0" Orientation="Vertical" />
+                    <StackPanel Name="InstructionPanel" Grid.Column="1" Orientation="Vertical" />
+                </Grid>
+            </StackPanel>            
         </ScrollViewer>
     </Grid>
 </Page>

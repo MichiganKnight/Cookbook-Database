@@ -23,36 +23,41 @@ namespace Cookbook_Database.Windows
         {
             foreach (string name in NameModel.NameModelToString())
             {
-                CreateLabels(name);
+                CreateLabels(name, NamePanel);
             }
 
             foreach (string serving in ServingsModel.ServingsModelToString())
             {
-                CreateLabels($"Serves {serving}");
+                CreateLabels($"Serves {serving}", ServingsPanel);
             }
 
             foreach (string description in DescriptionModel.DescriptionModelToString())
             {
-                CreateTextBlocks(description);
+                CreateTextBlocks(description, DescriptionPanel);
             }
 
             foreach (string quantity in QuantityModel.QuantityModelToString())
             {
-                CreateTextBlocks(quantity);
+                CreateLabels(quantity, QuantityPanel);
             }
 
             foreach (string ingredient in IngredientNameModel.IngredientModelToString())
             {
-                CreateTextBlocks(ingredient);
+                CreateLabels(ingredient, IngredientPanel);
             }
 
-            /*for (int i = 0; i < QuantityModel.QuantityModelToString().Count; i++)
+            foreach (string step in StepModel.StepModelToString())
             {
-                CreateTextBlocks($"Step {i}:");
-            }*/
+                CreateLabels($"Step {step}:", StepPanel);
+            }
+
+            foreach (string instruction in InstructionModel.InstructionModelToString())
+            {
+                CreateTextBlocks(instruction, InstructionPanel);
+            }
         }
 
-        private void CreateLabels(string text)
+        private void CreateLabels(string text, Panel panel)
         {
             string name = Regex.Replace($"{text}Label", @"[^a-zA-Z0-9]+", "");
 
@@ -65,14 +70,13 @@ namespace Cookbook_Database.Windows
                 Foreground = Brushes.Black,
                 Height = 50,
                 HorizontalAlignment = HorizontalAlignment.Center,
-                Name = ReplaceWithWord(name),
-                Margin = new Thickness(10, 0, 0, 0)
+                Name = ReplaceWithWord(name)
             };
 
-            RecipePanel.Children.Add(label);
+            panel.Children.Add(label);
         }
 
-        private void CreateTextBlocks(string text)
+        private void CreateTextBlocks(string text, Panel panel)
         {
             string name = Regex.Replace($"{text}TextBox", @"[^a-zA-Z0-9]+", "");
 
@@ -91,7 +95,7 @@ namespace Cookbook_Database.Windows
                 Width = 500
             };
 
-            RecipePanel.Children.Add(textBlock);
+            panel.Children.Add(textBlock);
         }
 
         private void GoBackButton_Click(object sender, RoutedEventArgs e)
