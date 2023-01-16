@@ -124,29 +124,47 @@ namespace Cookbook_Database.DatabaseHandler
         }
     }
 
-    public class IngredientModel
+    public class QuantityModel
     {
         public string? Quantity { get; set; }
-        public string? Name { get; set; }
 
-        public static List<string> IngredientRecipeModelToString()
+        public static List<string> QuantityModelToString()
         {
-            List<IngredientModel> ingredientModels = new();
+            List<QuantityModel> quantityModels = new();
 
-            ingredientModels = LoadIngredients();
+            quantityModels = LoadQuantities();
 
             List<string> recipeStrings = new();
 
-            foreach (IngredientModel ingredientModel in ingredientModels)
+            foreach (QuantityModel quantityModel in quantityModels)
             {
-                if (!string.IsNullOrEmpty(ingredientModel.Quantity))
+                if (!string.IsNullOrEmpty(quantityModel.Quantity))
                 {
-                    recipeStrings.Add(ingredientModel.Quantity);
+                    recipeStrings.Add(quantityModel.Quantity);
                 }
+            }
 
-                if (!string.IsNullOrEmpty(ingredientModel.Name))
+            return recipeStrings;
+        }
+    }
+
+    public class IngredientNameModel
+    {
+        public string? Name { get; set; }
+
+        public static List<string> IngredientModelToString()
+        {
+            List<IngredientNameModel> ingredientNameModels = new();
+
+            ingredientNameModels = LoadIngredientNames();
+
+            List<string> recipeStrings = new();
+
+            foreach (IngredientNameModel ingredientNameModel in ingredientNameModels)
+            {
+                if (!string.IsNullOrEmpty(ingredientNameModel.Name))
                 {
-                    recipeStrings.Add(ingredientModel.Name);
+                    recipeStrings.Add(ingredientNameModel.Name);
                 }
             }
 
@@ -163,7 +181,7 @@ namespace Cookbook_Database.DatabaseHandler
         {
             List<InstructionModel> instructionsModels = new();
 
-            instructionsModels = LoadInstructions();
+            //instructionsModels = LoadInstructions();
 
             List<string> recipeStrings = new();
 
