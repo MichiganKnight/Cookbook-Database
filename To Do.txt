@@ -5,5 +5,6 @@ Refine and fix CooksCountryRecipeModel
 Make a nicer looking title bar
 Add RecipeView for CooksCountryRecipes
 Refine searching for Cooks Country recipes and search by ingredient
+Clean up CooksCountryRecipeView and make it look nicer
 
 Maybe someday transitiion entire project to a MVVM approach
