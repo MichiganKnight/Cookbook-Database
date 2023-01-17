@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Cookbook_Database.Properties;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,9 +26,28 @@ namespace Cookbook_Database.Windows
 
         private void PrintedRecipesButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            PrintedRecipes Form = Application.Current.Windows[0] as PrintedRecipes;
+            PrintedRecipes? Form = Application.Current.Windows[0] as PrintedRecipes;
 
             Form.Frame.Visibility = Visibility.Collapsed;
+        }
+
+        private void GoBackButton_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Function Not Implemeneted");
+
+            //MessageBox.Show(Settings.Default.PreviousPageInfo);
+
+            /*switch (Settings.Default.PreviousPageInfo)
+            {
+                case "2018":
+                    MessageBox.Show(Settings.Default.PreviousPageInfo);
+                    break;
+                case "FebMarch":
+                    MessageBox.Show(Settings.Default.PreviousPageInfo);
+                    break;
+                default:
+                    break;
+            }*/
         }
 
         #region Mouse Enter & Leave Events
@@ -42,6 +62,18 @@ namespace Cookbook_Database.Windows
         {
             PrintedRecipesButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#333");
             PrintedRecipesButton.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#e5e5e5");
+        }
+
+        private void GoBackButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            GoBackButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#ddd");
+            GoBackButton.Foreground = Brushes.White;
+        }
+
+        private void GoBackButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            GoBackButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#333");
+            GoBackButton.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#e5e5e5");
         }
 
         private void Submit_MouseEnter(object sender, MouseEventArgs e)

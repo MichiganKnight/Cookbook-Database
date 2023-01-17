@@ -31,6 +31,11 @@ namespace Cookbook_Database.Windows
             Form.Frame.NavigationService.Navigate(new CooksCountryRecipes());
         }
 
+        private void GoBackButton_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Function Not Implemented");
+        }
+
         #region Mouse Enter & Leave Events
 
         private void CooksCountryRecipesButton_MouseEnter(object sender, MouseEventArgs e)
@@ -43,6 +48,18 @@ namespace Cookbook_Database.Windows
         {
             CooksCountryRecipesButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#333");
             CooksCountryRecipesButton.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#e5e5e5");
+        }
+
+        private void GoBackButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            GoBackButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#ddd");
+            GoBackButton.Foreground = Brushes.White;
+        }
+
+        private void GoBackButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            GoBackButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#333");
+            GoBackButton.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#e5e5e5");
         }
 
         private void Submit_MouseEnter(object sender, MouseEventArgs e)
