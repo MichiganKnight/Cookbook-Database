@@ -40,29 +40,7 @@ namespace Cookbook_Database
                 .ToList();
 
             return recipeModels;
-        }
-
-        public static List<YearModel> LoadYears()
-        {
-            using IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString());
-
-            var year = cnn.Query<YearModel>($"select Year from Recipe order by Year asc", new DynamicParameters());
-
-            List<YearModel>? recipeModels = year.ToList();
-
-            return recipeModels;
-        }
-
-        public static List<IssueModel> LoadIssues()
-        {
-            using IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString());
-
-            var issue = cnn.Query<IssueModel>($"select Issue from Recipe order by Id asc", new DynamicParameters());
-
-            List<IssueModel>? recipeModels = issue.ToList();
-
-            return recipeModels;
-        }
+        }        
 
         public static List<NameModel> LoadNames()
         {
