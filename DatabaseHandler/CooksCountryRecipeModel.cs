@@ -4,54 +4,6 @@ using static Cookbook_Database.SqLiteDataAccess;
 
 namespace Cookbook_Database.DatabaseHandler
 {
-    public class YearModel
-    {
-        public string? Year { get; set; }
-
-        public static List<string> YearModelToString()
-        {
-            List<YearModel> recipeModels = new();
-
-            recipeModels = LoadYears();
-
-            List<string> recipeStrings = new();
-
-            foreach (YearModel recipeModel in recipeModels)
-            {
-                if (!string.IsNullOrEmpty(recipeModel.Year))
-                {
-                    recipeStrings.Add(recipeModel.Year);
-                }
-            }
-
-            return recipeStrings;
-        }
-    }
-
-    public class IssueModel
-    {
-        public string? Issue { get; set; }
-
-        public static List<string> IssueModelToString()
-        {
-            List<IssueModel> issueModels = new();
-
-            issueModels = LoadIssues();
-
-            List<string> recipeStrings = new();
-
-            foreach (IssueModel issueModel in issueModels)
-            {
-                if (!string.IsNullOrEmpty(issueModel.Issue))
-                {
-                    recipeStrings.Add(issueModel.Issue);
-                }
-            }
-
-            return recipeStrings;
-        }
-    }
-
     public class NameModel
     {
         public string? Name { get; set; }
