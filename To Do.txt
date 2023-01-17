@@ -6,5 +6,10 @@ Make a nicer looking title bar
 Add RecipeView for CooksCountryRecipes
 Refine searching for Cooks Country recipes and search by ingredient
 Clean up CooksCountryRecipeView and make it look nicer
+Implement GoBack buttons for both PrintedRecipes & CooksCountryRecipes
+
+Rework PrintedRecipes to be similar to CooksCountryRecipes and have recipes listed on right side of page
+
+RecipeView are ONLY FOR VIEWING THE RECIPE
 
 Maybe someday transitiion entire project to a MVVM approach
