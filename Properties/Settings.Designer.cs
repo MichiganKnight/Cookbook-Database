@@ -90,5 +90,41 @@ namespace Cookbook_Database.Properties {
                 this["CooksCountryRecipeToDisplay"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CooksCountryYear {
+            get {
+                return ((string)(this["CooksCountryYear"]));
+            }
+            set {
+                this["CooksCountryYear"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CooksCountryIssue {
+            get {
+                return ((string)(this["CooksCountryIssue"]));
+            }
+            set {
+                this["CooksCountryIssue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PreviousPageInfo {
+            get {
+                return ((string)(this["PreviousPageInfo"]));
+            }
+            set {
+                this["PreviousPageInfo"] = value;
+            }
+        }
     }
 }
