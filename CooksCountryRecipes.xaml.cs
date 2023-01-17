@@ -21,37 +21,52 @@ namespace Cookbook_Database
             InitializeComponent();
         }
 
-        private void DisplayNames()
+        private void DisplayRecipeNames()
         {
             foreach (string name in NameModel.NameModelToString())
             {
-                CreateButtons(name);
+                CreateRecipeButtons(name);
             }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            //Settings.Default.PreviousPageInfo = "Cooks Country Recipes";
         }
 
         private void Button_2018_Click(object sender, RoutedEventArgs e)
         {
+            Settings.Default.CooksCountryYear = "2018";
+            //Settings.Default.PreviousPageInfo = "2018";
+
+            TitleLabel.Content = "Cookbook Database - Cooks Country Recipes";
+            SubtitleLabel.Content = $"{Settings.Default.CooksCountryYear} Issue";
+
             YearPanel.Visibility = Visibility.Collapsed;
 
             IssuePanel.Visibility = Visibility.Visible;
-
-            Settings.Default.CooksCountryYear = "2018";
         }
 
         private void FebMarchButton_Click(object sender, RoutedEventArgs e)
         {
-            Settings.Default.CooksCountryIssue = "FebMarch";
+            Settings.Default.CooksCountryIssue = "February / March";
+            //Settings.Default.PreviousPageInfo = "February / March";
+
+            TitleLabel.Content = "Cookbook Database - Cooks Country Recipes";
+            SubtitleLabel.Content = $"{Settings.Default.CooksCountryIssue} Volume";
 
             IssuePanel.Visibility = Visibility.Collapsed;
 
-            DisplayNames();
+            DisplayRecipeNames();
         }
 
-        private void CreateButtons(string recipe)
+        private void CreateRecipeButtons(string recipe)
         {
-            string name = Regex.Replace($"{recipe}Button", @"[^a-zA-Z0-9]+", "");
+            //Settings.Default.PreviousPageInfo = Settings.Default.CooksCountryIssue;
 
-            Button button = new()
+            string recipeName = Regex.Replace($"{recipe}Button", @"[^a-zA-Z0-9]+", "");
+
+            Button recipeButton = new()
             {
                 Content = recipe,
                 Cursor = Cursors.Hand,
@@ -61,25 +76,25 @@ namespace Cookbook_Database
                 Foreground = Brushes.Blue,
                 Height = 50,
                 HorizontalAlignment = HorizontalAlignment.Left,
-                Name = ReplaceWithWord(name),
+                Name = ReplaceWithWord(recipeName),
                 Margin = new Thickness(10, 0, 0, 0)
             };
 
-            RecipePanel.Children.Add(button);
+            RecipePanel.Children.Add(recipeButton);
 
-            button.MouseEnter += (s, e) =>
+            recipeButton.MouseEnter += (s, e) =>
             {
-                button.Background = Brushes.LightGray;
+                recipeButton.Background = Brushes.LightGray;
             };
 
-            button.MouseLeave += (s, e) =>
+            recipeButton.MouseLeave += (s, e) =>
             {
-                button.Background = Brushes.White;
+                recipeButton.Background = Brushes.White;
             };
 
-            button.Click += (s, e) =>
+            recipeButton.Click += (s, e) =>
             {
-                Settings.Default.CooksCountryRecipeToDisplay = button.Content.ToString();
+                Settings.Default.CooksCountryRecipeToDisplay = recipeButton.Content.ToString();
 
                 Frame.Visibility = Visibility.Visible;
                 Frame.NavigationService.Navigate(new CooksCountryRecipeView());
