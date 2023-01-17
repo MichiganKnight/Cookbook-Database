@@ -16,36 +16,35 @@ namespace Cookbook_Database
     /// </summary>
     public partial class CooksCountryRecipes : Page
     {
-        int numberOfClicks = 0;
-
         public CooksCountryRecipes()
         {
             InitializeComponent();
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            foreach (string year in YearModel.YearModelToString())
-            {
-                CreateButtons(year);
-            }
-        }
-
-        private void DisplayIssues()
-        {
-            foreach (string issue in IssueModel.IssueModelToString())
-            {
-                CreateButtons(issue);
-            }
-        }
-
         private void DisplayNames()
         {
-
             foreach (string name in NameModel.NameModelToString())
             {
                 CreateButtons(name);
             }
+        }
+
+        private void Button_2018_Click(object sender, RoutedEventArgs e)
+        {
+            YearPanel.Visibility = Visibility.Collapsed;
+
+            IssuePanel.Visibility = Visibility.Visible;
+
+            Settings.Default.CooksCountryYear = "2018";
+        }
+
+        private void FebMarchButton_Click(object sender, RoutedEventArgs e)
+        {
+            Settings.Default.CooksCountryIssue = "FebMarch";
+
+            IssuePanel.Visibility = Visibility.Collapsed;
+
+            DisplayNames();
         }
 
         private void CreateButtons(string recipe)
@@ -80,30 +79,10 @@ namespace Cookbook_Database
 
             button.Click += (s, e) =>
             {
-                RecipePanel.Children.Clear();
+                Settings.Default.CooksCountryRecipeToDisplay = button.Content.ToString();
 
-                numberOfClicks++;
-
-                switch (numberOfClicks)
-                {
-                    case 1:
-                        DisplayIssues();
-
-                        break;
-                    case 2:
-                        DisplayNames();
-                        
-                        break;
-                    case 3:
-                        Settings.Default.CooksCountryRecipeToDisplay = button.Content.ToString();
-
-                        Frame.Visibility = Visibility.Visible;
-                        Frame.NavigationService.Navigate(new CooksCountryRecipeView());
-
-                        break;
-                    default:
-                        break;
-                }
+                Frame.Visibility = Visibility.Visible;
+                Frame.NavigationService.Navigate(new CooksCountryRecipeView());
             };
         }
     }
