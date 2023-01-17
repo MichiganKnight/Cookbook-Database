@@ -6,9 +6,10 @@ Make a nicer looking title bar
 Add RecipeView for CooksCountryRecipes
 Refine searching for Cooks Country recipes and search by ingredient
 Clean up CooksCountryRecipeView and make it look nicer
+MouseEnter & Leave inconsistent between PrintedRecipes & CooksCountryRecipes
 Implement GoBack buttons for both PrintedRecipes & CooksCountryRecipes
 
-Rework PrintedRecipes to be similar to CooksCountryRecipes and have recipes listed on right side of page
+Rework PrintedRecipes to be similar to CooksCountryRecipes and have recipes listed on right side of page (Panels needed)
 
 RecipeView are ONLY FOR VIEWING THE RECIPE
 
