@@ -16,13 +16,16 @@
                 <MenuItem Name="GoBackButton" Header="Go Back" Cursor="Hand" Click="GoBackButton_Click" />
             </Menu>
         </DockPanel>
-        <ScrollViewer VerticalScrollBarVisibility="Visible" Height="720">
+        <ScrollViewer VerticalScrollBarVisibility="Visible" Height="1010" VerticalAlignment="Top">
             <StackPanel>
                 <StackPanel Name="DescriptionPanel">
                     <StackPanel Name="ServingsPanel">
                         <StackPanel Name="NamePanel" />
+                        <Separator/>
                     </StackPanel>
                 </StackPanel>
+                <Separator/>
+                <Label Content="Ingredients:" FontSize="30" FontWeight="Medium" Background="{x:Null}" Foreground="Black" Height="50" HorizontalAlignment="Center" />
                 <Grid HorizontalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -31,13 +34,15 @@
                     <StackPanel Name="QuantityPanel" Grid.Column="0" Orientation="Vertical" />
                     <StackPanel Name="IngredientPanel" Grid.Column="1" Orientation="Vertical" />
                 </Grid>
+                <Separator/>
+                <Label Content="Instructions:" FontSize="30" FontWeight="Medium" Background="{x:Null}" Foreground="Black" Height="50" HorizontalAlignment="Center" />
                 <Grid HorizontalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <StackPanel Name="StepPanel" Grid.Column="0" Orientation="Vertical" />
-                    <StackPanel Name="InstructionPanel" Grid.Column="1" Orientation="Vertical" />
+                    <StackPanel Name="InstructionPanel" Grid.Column="1" Orientation="Vertical"/>
                 </Grid>
             </StackPanel>            
         </ScrollViewer>
