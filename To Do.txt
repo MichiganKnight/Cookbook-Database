@@ -1,20 +1,20 @@
 ﻿----File Management----
 
-Split up SqLiteDataAccess into smaller files
+Reconfigure Model classes and condense into a single file - EASY
 
 ----Search----
 
-Refine searching for Cooks Country recipes and search by ingredient
+Refine searching for Cooks Country recipes and search by ingredient - DIFFICULT
 
 ----UI----
 
-Implement GoBack buttons for both PrintedRecipes & CooksCountryRecipes
-Rework PrintedRecipes to be similar to CooksCountryRecipes and have recipes listed on left side of page (Panels needed)
+Implement GoBack buttons for both PrintedRecipes & CooksCountryRecipes - DIFFICULT
+Rework PrintedRecipes to be similar to CooksCountryRecipes and have recipes listed on left side of page (Panels needed) - EASY
 RecipeView are ONLY FOR VIEWING THE RECIPE??
 
 ----Favorites----
 
-Add a favorite section that shows all the favorited recipes
+Add a favorite section that shows all the favorited recipes - DIFFICULT
 
 ----Future Goals----
 
