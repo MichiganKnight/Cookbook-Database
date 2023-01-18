@@ -82,18 +82,15 @@ namespace Cookbook_Database.DatabaseHandler
 
         public static List<string> QuantityModelToString()
         {
-            List<QuantityModel> quantityModels = new();
+            List<string> quantityModels = new();
 
             quantityModels = LoadQuantities();
 
             List<string> recipeStrings = new();
 
-            foreach (QuantityModel quantityModel in quantityModels)
+            foreach (string quantityModel in quantityModels)
             {
-                if (!string.IsNullOrEmpty(quantityModel.Quantity))
-                {
-                    recipeStrings.Add(quantityModel.Quantity);
-                }
+                recipeStrings.Add(quantityModel);
             }
 
             return recipeStrings;
@@ -106,18 +103,15 @@ namespace Cookbook_Database.DatabaseHandler
 
         public static List<string> IngredientModelToString()
         {
-            List<IngredientNameModel> ingredientNameModels = new();
+            List<string> ingredientNameModels = new();
 
             ingredientNameModels = LoadIngredientNames();
 
             List<string> recipeStrings = new();
 
-            foreach (IngredientNameModel ingredientNameModel in ingredientNameModels)
+            foreach (string ingredientNameModel in ingredientNameModels)
             {
-                if (!string.IsNullOrEmpty(ingredientNameModel.Name))
-                {
-                    recipeStrings.Add(ingredientNameModel.Name);
-                }
+                recipeStrings.Add(ingredientNameModel);
             }
 
             return recipeStrings;
@@ -130,18 +124,15 @@ namespace Cookbook_Database.DatabaseHandler
 
         public static List<string> StepModelToString()
         {
-            List<StepModel> stepModels = new();
+            List<int> stepModels = new();
 
             stepModels = LoadSteps();
 
             List<string> recipeStrings = new();
 
-            foreach (StepModel stepModel in stepModels)
+            foreach (int stepModel in stepModels)
             {
-                if (!string.IsNullOrEmpty(stepModel.Step))
-                {
-                    recipeStrings.Add(stepModel.Step);
-                }
+                recipeStrings.Add(stepModel.ToString());
             }
 
             return recipeStrings;
@@ -154,18 +145,15 @@ namespace Cookbook_Database.DatabaseHandler
 
         public static List<string> InstructionModelToString()
         {
-            List<InstructionModel> instructionsModels = new();
+            List<string> instrucitonModels = new();
 
-            instructionsModels = LoadInstructions();
+            instrucitonModels = LoadInstructions();
 
             List<string> recipeStrings = new();
 
-            foreach (InstructionModel instructionModel in instructionsModels)
+            foreach (string instructionModel in instrucitonModels)
             {
-                if (!string.IsNullOrEmpty(instructionModel.Description))
-                {
-                    recipeStrings.Add(instructionModel.Description);
-                }
+                recipeStrings.Add(instructionModel);
             }
 
             return recipeStrings;
