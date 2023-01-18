@@ -31,6 +31,8 @@ namespace Cookbook_Database
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            // TODO: Figure out the go back buttons
+
             //Settings.Default.PreviousPageInfo = "Cooks Country Recipes";
         }
 
