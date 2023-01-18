@@ -25,7 +25,7 @@
                     </StackPanel>
                 </StackPanel>
                 <Separator/>
-                <Label Content="Ingredients:" FontSize="30" FontWeight="Medium" Background="{x:Null}" Foreground="Black" Height="50" HorizontalAlignment="Center" />
+                <Label Content="Ingredients:" FontSize="30" FontWeight="Medium" Background="{x:Null}" Foreground="Maroon" Height="50" HorizontalAlignment="Center" />
                 <Grid HorizontalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -35,7 +35,7 @@
                     <StackPanel Name="IngredientPanel" Grid.Column="1" Orientation="Vertical" />
                 </Grid>
                 <Separator/>
-                <Label Content="Instructions:" FontSize="30" FontWeight="Medium" Background="{x:Null}" Foreground="Black" Height="50" HorizontalAlignment="Center" />
+                <Label Content="Instructions:" FontSize="30" FontWeight="Medium" Background="{x:Null}" Foreground="Maroon" Height="50" HorizontalAlignment="Center" />
                 <Grid HorizontalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />

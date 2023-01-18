@@ -23,12 +23,12 @@ namespace Cookbook_Database.Windows
         {
             foreach (string name in NameModel.NameModelToString())
             {
-                CreateLabels(name, NamePanel, 50, false);
+                CreateLabels(name, NamePanel, 50, Brushes.Maroon);
             }
 
             foreach (string serving in ServingsModel.ServingsModelToString())
             {
-                CreateLabels($"Serves {serving}", ServingsPanel, 50, false);
+                CreateLabels($"Serves {serving}", ServingsPanel, 50, Brushes.Maroon);
             }
 
             foreach (string description in DescriptionModel.DescriptionModelToString())
@@ -38,17 +38,17 @@ namespace Cookbook_Database.Windows
 
             foreach (string quantity in QuantityModel.QuantityModelToString())
             {
-                CreateLabels(quantity, QuantityPanel, 50, false);
+                CreateLabels(quantity, QuantityPanel, 50, Brushes.Black);
             }
 
             foreach (string ingredient in IngredientNameModel.IngredientModelToString())
             {
-                CreateLabels(ingredient, IngredientPanel, 50, false);
+                CreateLabels(ingredient, IngredientPanel, 50, Brushes.Black);
             }
 
             foreach (string step in StepModel.StepModelToString())
             {
-                CreateLabels($"Step {step}:", StepPanel, 375, false);
+                CreateLabels($"Step {step}:", StepPanel, 100, 300);
             }
 
             foreach (string instruction in InstructionModel.InstructionModelToString())
@@ -57,91 +57,87 @@ namespace Cookbook_Database.Windows
             }
         }
 
-        /// <summary>
-        /// Creates labels for recipe parts
-        /// </summary>
-        /// <param name="text">Text to display</param>
-        /// <param name="panel">Panel parent</param>
-        /// <param name="height">Height</param>
-        /// <param name="hasMargin">If a margin should be added</param>
-        private static void CreateLabels(string text, StackPanel panel, int height, bool hasMargin)
+        private static void CreateLabels(string text, StackPanel panel, int width, int height)
         {
             string name = Regex.Replace($"{text}Label", @"[^a-zA-Z0-9]+", "");
 
-            if (hasMargin)
+            Label label = new()
             {
-                Label label = new()
-                {
-                    Content = text.Replace("Label", ""),
-                    FontSize = 25,
-                    FontWeight = FontWeights.Medium,
-                    Background = null,
-                    Foreground = Brushes.Black,
-                    Height = height,
-                    HorizontalAlignment = HorizontalAlignment.Center,
-                    Name = ReplaceWithWord(name),
-                    BorderBrush = Brushes.Black,
-                    BorderThickness = new Thickness(1)
-                };
+                Content = text.Replace("Label", ""),
+                FontSize = 25,
+                FontWeight = FontWeights.Medium,
+                Background = null,
+                Foreground = Brushes.Black,
+                Width = width,
+                Height = height,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Name = ReplaceWithWord(name)
+            };
 
-                panel.Children.Add(label);
-            }
-            else
+            panel.Children.Add(label);    
+        }
+
+        private static void CreateLabels(string text, StackPanel panel, int height, SolidColorBrush solidColorBrush)
+        {
+            string name = Regex.Replace($"{text}Label", @"[^a-zA-Z0-9]+", "");
+
+            Label label = new()
             {
-                Label label = new()
-                {
-                    Content = text.Replace("Label", ""),
-                    FontSize = 25,
-                    FontWeight = FontWeights.Medium,
-                    Background = null,
-                    Foreground = Brushes.Black,
-                    Height = height,
-                    HorizontalAlignment = HorizontalAlignment.Center,
-                    Name = ReplaceWithWord(name),
-                    BorderBrush = Brushes.Black,
-                    BorderThickness = new Thickness(1)
-                };
+                Content = text.Replace("Label", ""),
+                FontSize = 25,
+                FontWeight = FontWeights.Medium,
+                Background = null,
+                Foreground = solidColorBrush,
+                Height = height,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Name = ReplaceWithWord(name)
+            };
 
-                panel.Children.Add(label);
-            }            
+            panel.Children.Add(label);
         }
 
         private static void CreateTextBlocks(string text, Panel panel, bool needsScrollbar)
         {
-            string name = Regex.Replace($"{text}TextBox", @"[^a-zA-Z0-9]+", "");
+            string name = Regex.Replace($"{text}TextBlock", @"[^a-zA-Z0-9]+", "");
 
             if (needsScrollbar)
             {
+                Border border = new()
+                {
+                    Height = 300
+                };
+
                 ScrollViewer scrollViewer = new()
                 {
-                    VerticalScrollBarVisibility = ScrollBarVisibility.Visible,
-                    Height = 375
+                    VerticalScrollBarVisibility = ScrollBarVisibility.Auto
                 };
 
                 TextBlock textBlock = new()
                 {
-                    Text = text.Replace("TextBox", ""),
+                    Text = text.Replace("TextBlock", ""),
                     FontSize = 25,
                     FontWeight = FontWeights.Medium,
                     Background = null,
                     Foreground = Brushes.Black,
                     HorizontalAlignment = HorizontalAlignment.Center,
-                    TextAlignment = TextAlignment.Center,
+                    TextAlignment = TextAlignment.Left,
                     Name = ReplaceWithWord(name),
                     TextWrapping = TextWrapping.Wrap,
-                    Height = 375,
-                    Width = 750
+                    Width = 750,
+                    Margin = new Thickness(0, 5, 0, 0)
                 };
 
                 scrollViewer.Content = textBlock;
 
-                panel.Children.Add(scrollViewer);
+                border.Child = scrollViewer;
+
+                panel.Children.Add(border);
             }
             else
             {
                 TextBlock textBlock = new()
                 {
-                    Text = text.Replace("TextBox", ""),
+                    Text = text.Replace("TextBlock", ""),
                     FontSize = 25,
                     FontWeight = FontWeights.Medium,
                     Background = null,
@@ -150,9 +146,7 @@ namespace Cookbook_Database.Windows
                     TextAlignment = TextAlignment.Center,
                     Name = ReplaceWithWord(name),
                     TextWrapping = TextWrapping.Wrap,
-                    Width = 500,
-                    
-                    // Wrap in a border
+                    Width = 500
                 };
 
                 panel.Children.Add(textBlock);
