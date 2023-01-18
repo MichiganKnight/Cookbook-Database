@@ -1,8 +1,6 @@
 ﻿Add name of recipe to image section of RecipeView and Search
 Split up SqLiteDataAccess into smaller files
-Make a nicer looking title bar
 Refine searching for Cooks Country recipes and search by ingredient
-Clean up CooksCountryRecipeView and make it look nicer
 MouseEnter & Leave inconsistent between PrintedRecipes & CooksCountryRecipes
 Implement GoBack buttons for both PrintedRecipes & CooksCountryRecipes
 
@@ -10,5 +8,8 @@ Rework PrintedRecipes to be similar to CooksCountryRecipes and have recipes list
 
 RecipeView are ONLY FOR VIEWING THE RECIPE
 
+-----------------------------------------------------------
+
 Maybe someday transitiion entire project to a MVVM approach
+Make a nicer looking title bar
 Add documentation
