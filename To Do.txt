@@ -1,13 +1,22 @@
-﻿Split up SqLiteDataAccess into smaller files
+﻿----File Management----
+
+Split up SqLiteDataAccess into smaller files
+
+----Search----
+
 Refine searching for Cooks Country recipes and search by ingredient
 
+----UI----
+
 Implement GoBack buttons for both PrintedRecipes & CooksCountryRecipes
-
 Rework PrintedRecipes to be similar to CooksCountryRecipes and have recipes listed on left side of page (Panels needed)
+RecipeView are ONLY FOR VIEWING THE RECIPE??
 
-RecipeView are ONLY FOR VIEWING THE RECIPE
+----Favorites----
 
------------------------------------------------------------
+Add a favorite section that shows all the favorited recipes
+
+----Future Goals----
 
 Maybe someday transitiion entire project to a MVVM approach
 Make a nicer looking title bar
