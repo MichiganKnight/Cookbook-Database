@@ -74,6 +74,7 @@ namespace Cookbook_Database
                 FontWeight = FontWeights.Medium,
                 Background = null,
                 Foreground = Brushes.Blue,
+                BorderBrush = Brushes.LightGray,
                 Height = 50,
                 HorizontalAlignment = HorizontalAlignment.Left,
                 Name = ReplaceWithWord(recipeName),
@@ -99,6 +100,40 @@ namespace Cookbook_Database
                 Frame.Visibility = Visibility.Visible;
                 Frame.NavigationService.Navigate(new CooksCountryRecipeView());
             };
+        }
+
+        private void Button_2019_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_2020_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_2021_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_2022_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Button? button = sender as Button;
+
+            button.Background = Brushes.LightGray;
+        }
+
+        private void Btn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Button? button = sender as Button;
+
+            button.Background = Brushes.White;
         }
     }
 }
