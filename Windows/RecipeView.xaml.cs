@@ -76,7 +76,8 @@ namespace Cookbook_Database.Windows
         /// <param name="recipe">Name of recipe</param>
         private void CreateRecipeItems(string recipe)
         {
-            string name = Regex.Replace($"{recipe}Button", @"[^a-zA-Z0-9]+", "");
+            string labelName = Regex.Replace($"{recipe}Label", @"[^a-zA-Z0-9]+", "");
+            string buttonName = Regex.Replace($"{recipe}Button", @"[^a-zA-Z0-9]+", "");
 
             Button button = new()
             {
@@ -86,9 +87,10 @@ namespace Cookbook_Database.Windows
                 FontWeight = FontWeights.Medium,
                 Background = null,
                 Foreground = Brushes.Blue,
+                BorderBrush = Brushes.LightGray,
                 Height = 50,
                 HorizontalAlignment = HorizontalAlignment.Center,
-                Name = ReplaceWithWord(name),
+                Name = ReplaceWithWord(buttonName),
             };
 
             button.MouseEnter += (s, e) =>
@@ -119,6 +121,20 @@ namespace Cookbook_Database.Windows
                         MenuSeperator.Visibility = Visibility.Visible;
                         PrintButton.Visibility = Visibility.Visible;
 
+                        Label label = new()
+                        {
+                            Content = recipe,
+                            FontSize = 25,
+                            FontWeight = FontWeights.Bold,
+                            Background = null,
+                            Foreground = Brushes.Maroon,
+                            Height = 50,
+                            HorizontalAlignment = HorizontalAlignment.Center,
+                            Name = ReplaceWithWord(labelName)
+                        };
+
+                        RecipePanel.Children.Add(label);
+
                         break;
                     }
                 }
@@ -132,6 +148,8 @@ namespace Cookbook_Database.Windows
         /// </summary>
         private void SwitchBetweenRecipeTypes()
         {
+            RecipePanel.Children.Clear();
+
             switch (Properties.Settings.Default.RecipeType)
             {
                 case "Salad":

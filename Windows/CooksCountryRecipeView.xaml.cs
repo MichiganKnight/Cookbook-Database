@@ -23,12 +23,12 @@ namespace Cookbook_Database.Windows
         {
             foreach (string name in NameModel.NameModelToString())
             {
-                CreateLabels(name, NamePanel, 50, Brushes.Maroon);
+                CreateLabels(name, NamePanel, 50, Brushes.Maroon, FontWeights.Bold);
             }
 
             foreach (string serving in ServingsModel.ServingsModelToString())
             {
-                CreateLabels($"Serves {serving}", ServingsPanel, 50, Brushes.Maroon);
+                CreateLabels($"Serves {serving}", ServingsPanel, 50, Brushes.Maroon, FontWeights.Medium);
             }
 
             foreach (string description in DescriptionModel.DescriptionModelToString())
@@ -38,12 +38,12 @@ namespace Cookbook_Database.Windows
 
             foreach (string quantity in QuantityModel.QuantityModelToString())
             {
-                CreateLabels(quantity, QuantityPanel, 50, Brushes.Black);
+                CreateLabels(quantity, QuantityPanel, 50, Brushes.Black, FontWeights.Medium);
             }
 
             foreach (string ingredient in IngredientNameModel.IngredientModelToString())
             {
-                CreateLabels(ingredient, IngredientPanel, 50, Brushes.Black);
+                CreateLabels(ingredient, IngredientPanel, 50, Brushes.Black, FontWeights.Medium);
             }
 
             foreach (string step in StepModel.StepModelToString())
@@ -77,7 +77,7 @@ namespace Cookbook_Database.Windows
             panel.Children.Add(label);    
         }
 
-        private static void CreateLabels(string text, StackPanel panel, int height, SolidColorBrush solidColorBrush)
+        private static void CreateLabels(string text, StackPanel panel, int height, SolidColorBrush solidColorBrush, FontWeight fontWeight)
         {
             string name = Regex.Replace($"{text}Label", @"[^a-zA-Z0-9]+", "");
 
@@ -85,7 +85,7 @@ namespace Cookbook_Database.Windows
             {
                 Content = text.Replace("Label", ""),
                 FontSize = 25,
-                FontWeight = FontWeights.Medium,
+                FontWeight = fontWeight,
                 Background = null,
                 Foreground = solidColorBrush,
                 Height = height,

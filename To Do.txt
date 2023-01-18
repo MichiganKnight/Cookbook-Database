@@ -1,10 +1,9 @@
-﻿Add name of recipe to image section of RecipeView and Search
-Split up SqLiteDataAccess into smaller files
+﻿Split up SqLiteDataAccess into smaller files
 Refine searching for Cooks Country recipes and search by ingredient
-MouseEnter & Leave inconsistent between PrintedRecipes & CooksCountryRecipes
+
 Implement GoBack buttons for both PrintedRecipes & CooksCountryRecipes
 
-Rework PrintedRecipes to be similar to CooksCountryRecipes and have recipes listed on right side of page (Panels needed)
+Rework PrintedRecipes to be similar to CooksCountryRecipes and have recipes listed on left side of page (Panels needed)
 
 RecipeView are ONLY FOR VIEWING THE RECIPE
 
