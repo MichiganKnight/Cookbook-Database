@@ -79,7 +79,6 @@ namespace Cookbook_Database
             Button? button = sender as Button;
 
             button.Background = Brushes.LightGray;
-            button.BorderBrush = null;
         }
 
         private void Btn_MouseLeave(object sender, MouseEventArgs e)
