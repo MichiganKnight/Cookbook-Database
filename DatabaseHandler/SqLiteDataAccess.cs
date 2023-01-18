@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 using System.Linq;
+using System.Windows;
 
 namespace Cookbook_Database
 {
@@ -75,48 +76,148 @@ namespace Cookbook_Database
             return recipeModels;
         }
 
-        public static List<QuantityModel> LoadQuantities()
+        public static List<string> LoadQuantities()
         {
-            using IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString());
+            List<string>? recipeModels = new();
 
-            var quantity = cnn.Query<QuantityModel>($"select Quantity from Ingredients where RecipeID like '%1%' order by Id asc", new DynamicParameters());
+            using (IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString()))
+            {
+                cnn.Open();
 
-            List<QuantityModel>? recipeModels = quantity.ToList();
+                string getIdSql = $"select Id from Recipe where Name = @recipeName order by Id asc";
+                string getQuantitySql = $"select Quantity from Ingredients where RecipeID = @recipeId";
+
+                using IDbCommand getIdCommand = cnn.CreateCommand();
+
+                getIdCommand.CommandText = getIdSql;
+                getIdCommand.Parameters.Add(new SQLiteParameter("@recipeName", Settings.Default.CooksCountryRecipeToDisplay));
+
+                var id = getIdCommand.ExecuteScalar();
+
+                using IDbCommand getQuantityCommand = cnn.CreateCommand();
+
+                getQuantityCommand.CommandText = getQuantitySql;
+                getQuantityCommand.Parameters.Add(new SQLiteParameter("@recipeId", id));
+
+                using IDataReader dataReader = getQuantityCommand.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    string data = dataReader.GetString(0);
+
+                    recipeModels.Add(data);
+                }
+            }
 
             return recipeModels;
         }
 
-        public static List<IngredientNameModel> LoadIngredientNames()
+        public static List<string> LoadIngredientNames()
         {
-            using IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString());
+            List<string>? recipeModels = new();
 
-            var ingredients = cnn.Query<IngredientNameModel>($"select Name from Ingredients where RecipeID like '%1%' order by Id asc", new DynamicParameters());
+            using (IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString()))
+            {
+                cnn.Open();
 
-            List<IngredientNameModel>? recipeModels = ingredients.ToList();
+                string getIdSql = $"select Id from Recipe where Name = @recipeName order by Id asc";
+                string getIngredientNameSql = $"select Name from Ingredients where RecipeID = @recipeId";
+
+                using IDbCommand getIdCommand = cnn.CreateCommand();
+
+                getIdCommand.CommandText = getIdSql;
+                getIdCommand.Parameters.Add(new SQLiteParameter("@recipeName", Settings.Default.CooksCountryRecipeToDisplay));
+
+                var id = getIdCommand.ExecuteScalar();
+
+                using IDbCommand getIngredientName = cnn.CreateCommand();
+
+                getIngredientName.CommandText = getIngredientNameSql;
+                getIngredientName.Parameters.Add(new SQLiteParameter("@recipeId", id));
+
+                using IDataReader dataReader = getIngredientName.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    string data = dataReader.GetString(0);
+
+                    recipeModels.Add(data);
+                }
+            }
 
             return recipeModels;
         }
 
-        public static List<StepModel> LoadSteps()
+        public static List<int> LoadSteps()
         {
-            using IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString());
+            List<int>? recipeModels = new();
 
-            var steps = cnn.Query<StepModel>($"select Step from Instructions where RecipeID like '%1%' order by Id asc", new DynamicParameters());
+            using (IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString()))
+            {
+                cnn.Open();
 
-            List<StepModel>? stepModels = steps.ToList();
+                string getIdSql = $"select Id from Recipe where Name = @recipeName order by Id asc";
+                string getStepSql = $"select Step from Instructions where RecipeID = @recipeId";
 
-            return stepModels;
+                using IDbCommand getIdCommand = cnn.CreateCommand();
+
+                getIdCommand.CommandText = getIdSql;
+                getIdCommand.Parameters.Add(new SQLiteParameter("@recipeName", Settings.Default.CooksCountryRecipeToDisplay));
+
+                var id = getIdCommand.ExecuteScalar();
+
+                using IDbCommand getQuantityCommand = cnn.CreateCommand();
+
+                getQuantityCommand.CommandText = getStepSql;
+                getQuantityCommand.Parameters.Add(new SQLiteParameter("@recipeId", id));
+
+                using IDataReader dataReader = getQuantityCommand.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    int data = dataReader.GetInt32(0);
+
+                    recipeModels.Add(data);
+                }
+            }
+
+            return recipeModels;
         }
 
-        public static List<InstructionModel> LoadInstructions()
+        public static List<string> LoadInstructions()
         {
-            using IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString());
+            List<string>? recipeModels = new();
 
-            var instructions = cnn.Query<InstructionModel>($"select Description from Instructions where RecipeID like '%1%' order by Id asc", new DynamicParameters());
+            using (IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString()))
+            {
+                cnn.Open();
 
-            List<InstructionModel>? instructionModels = instructions.ToList();
+                string getIdSql = $"select Id from Recipe where Name = @recipeName order by Id asc";
+                string getInstructionSql = $"select Description from Instructions where RecipeID = @recipeId";
 
-            return instructionModels;
+                using IDbCommand getIdCommand = cnn.CreateCommand();
+
+                getIdCommand.CommandText = getIdSql;
+                getIdCommand.Parameters.Add(new SQLiteParameter("@recipeName", Settings.Default.CooksCountryRecipeToDisplay));
+
+                var id = getIdCommand.ExecuteScalar();
+
+                using IDbCommand getQuantityCommand = cnn.CreateCommand();
+
+                getQuantityCommand.CommandText = getInstructionSql;
+                getQuantityCommand.Parameters.Add(new SQLiteParameter("@recipeId", id));
+
+                using IDataReader dataReader = getQuantityCommand.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    string data = dataReader.GetString(0);
+
+                    recipeModels.Add(data);
+                }
+            }
+
+            return recipeModels;
         }
 
         /// <summary>
