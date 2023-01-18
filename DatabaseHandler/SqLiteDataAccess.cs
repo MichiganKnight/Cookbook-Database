@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 using System.Linq;
-using System.Windows;
 
 namespace Cookbook_Database
 {
@@ -60,9 +59,9 @@ namespace Cookbook_Database
 
             var servings = cnn.Query<ServingsModel>($"select Servings from Recipe where Name like '%{Settings.Default.CooksCountryRecipeToDisplay}%' order by Id asc", new DynamicParameters());
 
-            List<ServingsModel>? recipeModels = servings.ToList();
+            List<ServingsModel>? servingModels = servings.ToList();
 
-            return recipeModels;
+            return servingModels;
         }
 
         public static List<DescriptionModel> LoadDescriptions()
@@ -71,14 +70,14 @@ namespace Cookbook_Database
 
             var description = cnn.Query<DescriptionModel>($"select Description from Recipe where Name like '%{Settings.Default.CooksCountryRecipeToDisplay}%' order by Id asc", new DynamicParameters());
 
-            List<DescriptionModel>? recipeModels = description.ToList();
+            List<DescriptionModel>? descriptionModels = description.ToList();
 
-            return recipeModels;
+            return descriptionModels;
         }
 
         public static List<string> LoadQuantities()
         {
-            List<string>? recipeModels = new();
+            List<string>? quantityStrings = new();
 
             using (IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString()))
             {
@@ -105,16 +104,16 @@ namespace Cookbook_Database
                 {
                     string data = dataReader.GetString(0);
 
-                    recipeModels.Add(data);
+                    quantityStrings.Add(data);
                 }
             }
 
-            return recipeModels;
+            return quantityStrings;
         }
 
         public static List<string> LoadIngredientNames()
         {
-            List<string>? recipeModels = new();
+            List<string>? ingredientNameStrings = new();
 
             using (IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString()))
             {
@@ -141,16 +140,16 @@ namespace Cookbook_Database
                 {
                     string data = dataReader.GetString(0);
 
-                    recipeModels.Add(data);
+                    ingredientNameStrings.Add(data);
                 }
             }
 
-            return recipeModels;
+            return ingredientNameStrings;
         }
 
         public static List<int> LoadSteps()
         {
-            List<int>? recipeModels = new();
+            List<int>? stepStrings = new();
 
             using (IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString()))
             {
@@ -177,16 +176,16 @@ namespace Cookbook_Database
                 {
                     int data = dataReader.GetInt32(0);
 
-                    recipeModels.Add(data);
+                    stepStrings.Add(data);
                 }
             }
 
-            return recipeModels;
+            return stepStrings;
         }
 
         public static List<string> LoadInstructions()
         {
-            List<string>? recipeModels = new();
+            List<string>? instructionStrings = new();
 
             using (IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString()))
             {
@@ -213,11 +212,11 @@ namespace Cookbook_Database
                 {
                     string data = dataReader.GetString(0);
 
-                    recipeModels.Add(data);
+                    instructionStrings.Add(data);
                 }
             }
 
-            return recipeModels;
+            return instructionStrings;
         }
 
         /// <summary>
@@ -229,9 +228,9 @@ namespace Cookbook_Database
         public static List<SaladModel> LoadSalads()
         {
             using IDbConnection cnn = new SQLiteConnection(LoadPrintedRecipeConnectionString());
-            var output = cnn.Query<SaladModel>("select Salad from SaladTable order by Salad asc", new DynamicParameters());
+            var salads = cnn.Query<SaladModel>("select Salad from SaladTable order by Salad asc", new DynamicParameters());
 
-            return output.ToList();
+            return salads.ToList();
         }
 
         /// <summary>
@@ -243,9 +242,9 @@ namespace Cookbook_Database
         public static List<SoupModel> LoadSoups()
         {
             using IDbConnection cnn = new SQLiteConnection(LoadPrintedRecipeConnectionString());
-            var output = cnn.Query<SoupModel>("select Soup from SoupTable order by Soup asc", new DynamicParameters());
+            var soups = cnn.Query<SoupModel>("select Soup from SoupTable order by Soup asc", new DynamicParameters());
 
-            return output.ToList();
+            return soups.ToList();
         }
 
         /// <summary>
@@ -257,9 +256,9 @@ namespace Cookbook_Database
         public static List<AppetizerModel> LoadAppetizers()
         {
             using IDbConnection cnn = new SQLiteConnection(LoadPrintedRecipeConnectionString());
-            var output = cnn.Query<AppetizerModel>("select Appetizer from AppetizerTable order by Appetizer asc", new DynamicParameters());
+            var appetizers = cnn.Query<AppetizerModel>("select Appetizer from AppetizerTable order by Appetizer asc", new DynamicParameters());
 
-            return output.ToList();
+            return appetizers.ToList();
         }
 
         /// <summary>
@@ -271,9 +270,9 @@ namespace Cookbook_Database
         public static List<MeatModel> LoadMeat()
         {
             using IDbConnection cnn = new SQLiteConnection(LoadPrintedRecipeConnectionString());
-            var output = cnn.Query<MeatModel>("select Meat from MeatTable order by Meat asc", new DynamicParameters());
+            var meat = cnn.Query<MeatModel>("select Meat from MeatTable order by Meat asc", new DynamicParameters());
 
-            return output.ToList();
+            return meat.ToList();
         }
 
         /// <summary>
@@ -285,9 +284,9 @@ namespace Cookbook_Database
         public static List<PoultryModel> LoadPoultry()
         {
             using IDbConnection cnn = new SQLiteConnection(LoadPrintedRecipeConnectionString());
-            var output = cnn.Query<PoultryModel>("select Poultry from PoultryTable order by Poultry asc", new DynamicParameters());
+            var poultry = cnn.Query<PoultryModel>("select Poultry from PoultryTable order by Poultry asc", new DynamicParameters());
 
-            return output.ToList();
+            return poultry.ToList();
         }
 
         /// <summary>
@@ -299,9 +298,9 @@ namespace Cookbook_Database
         public static List<SeafoodModel> LoadSeafood()
         {
             using IDbConnection cnn = new SQLiteConnection(LoadPrintedRecipeConnectionString());
-            var output = cnn.Query<SeafoodModel>("select Seafood from SeafoodTable order by Seafood asc", new DynamicParameters());
+            var seafood = cnn.Query<SeafoodModel>("select Seafood from SeafoodTable order by Seafood asc", new DynamicParameters());
 
-            return output.ToList();
+            return seafood.ToList();
         }
 
         /// <summary>
@@ -313,9 +312,9 @@ namespace Cookbook_Database
         public static List<VegetableModel> LoadVegetables()
         {
             using IDbConnection cnn = new SQLiteConnection(LoadPrintedRecipeConnectionString());
-            var output = cnn.Query<VegetableModel>("select Vegetable from VegetableTable order by Vegetable asc", new DynamicParameters());
+            var vegetables = cnn.Query<VegetableModel>("select Vegetable from VegetableTable order by Vegetable asc", new DynamicParameters());
 
-            return output.ToList();
+            return vegetables.ToList();
         }
 
         /// <summary>
@@ -327,9 +326,9 @@ namespace Cookbook_Database
         public static List<SideModel> LoadSides()
         {
             using IDbConnection cnn = new SQLiteConnection(LoadPrintedRecipeConnectionString());
-            var output = cnn.Query<SideModel>("select Side from SideTable order by Side asc", new DynamicParameters());
+            var sides = cnn.Query<SideModel>("select Side from SideTable order by Side asc", new DynamicParameters());
 
-            return output.ToList();
+            return sides.ToList();
         }
 
         /// <summary>
@@ -341,9 +340,9 @@ namespace Cookbook_Database
         public static List<DessertModel> LoadDesserts()
         {
             using IDbConnection cnn = new SQLiteConnection(LoadPrintedRecipeConnectionString());
-            var output = cnn.Query<DessertModel>("select Dessert from DessertTable order by Dessert asc", new DynamicParameters());
+            var desserts = cnn.Query<DessertModel>("select Dessert from DessertTable order by Dessert asc", new DynamicParameters());
 
-            return output.ToList();
+            return desserts.ToList();
         }
 
         /// <summary>
@@ -355,9 +354,9 @@ namespace Cookbook_Database
         public static List<BreakfastModel> LoadBreakfast()
         {
             using IDbConnection cnn = new SQLiteConnection(LoadPrintedRecipeConnectionString());
-            var output = cnn.Query<BreakfastModel>("select Breakfast from BreakfastTable order by Breakfast asc", new DynamicParameters());
+            var breakfasts = cnn.Query<BreakfastModel>("select Breakfast from BreakfastTable order by Breakfast asc", new DynamicParameters());
 
-            return output.ToList();
+            return breakfasts.ToList();
         }
 
         /// <summary>
@@ -369,16 +368,24 @@ namespace Cookbook_Database
         public static List<MiscModel> LoadMisc()
         {
             using IDbConnection cnn = new SQLiteConnection(LoadPrintedRecipeConnectionString());
-            var output = cnn.Query<MiscModel>("select Misc from MiscTable order by Misc asc", new DynamicParameters());
+            var misc = cnn.Query<MiscModel>("select Misc from MiscTable order by Misc asc", new DynamicParameters());
 
-            return output.ToList();
+            return misc.ToList();
         }
 
+        /// <summary>
+        /// Load connection string for the printed recipes
+        /// </summary>
+        /// <returns>Connection string as a string</returns>
         private static string LoadPrintedRecipeConnectionString()
         {
             return Settings.Default.PrintedRecipeConnectionString;
         }
 
+        /// <summary>
+        /// Load connection string for the cooks country recipes
+        /// </summary>
+        /// <returns>Connection string as a string</returns>
         private static string LoadCooksCountryRecipeConnectionString()
         {
             return Settings.Default.CooksCountryRecipeConnectionString;

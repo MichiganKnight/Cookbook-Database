@@ -1,9 +1,6 @@
-﻿Update names throughout code
-Add name of recipe to image section of RecipeView and Search
+﻿Add name of recipe to image section of RecipeView and Search
 Split up SqLiteDataAccess into smaller files
-Refine and fix CooksCountryRecipeModel
 Make a nicer looking title bar
-Add RecipeView for CooksCountryRecipes
 Refine searching for Cooks Country recipes and search by ingredient
 Clean up CooksCountryRecipeView and make it look nicer
 MouseEnter & Leave inconsistent between PrintedRecipes & CooksCountryRecipes
@@ -14,3 +11,4 @@ Rework PrintedRecipes to be similar to CooksCountryRecipes and have recipes list
 RecipeView are ONLY FOR VIEWING THE RECIPE
 
 Maybe someday transitiion entire project to a MVVM approach
+Add documentation

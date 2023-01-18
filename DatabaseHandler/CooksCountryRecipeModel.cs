@@ -14,17 +14,17 @@ namespace Cookbook_Database.DatabaseHandler
 
             nameModels = LoadNames();
 
-            List<string> recipeStrings = new();
+            List<string> nameStrings = new();
 
             foreach (NameModel nameModel in nameModels)
             {
                 if (!string.IsNullOrEmpty(nameModel.Name))
                 {
-                    recipeStrings.Add(nameModel.Name);
+                    nameStrings.Add(nameModel.Name);
                 }
             }
 
-            return recipeStrings;
+            return nameStrings;
         }
     }
 
@@ -38,17 +38,17 @@ namespace Cookbook_Database.DatabaseHandler
 
             servingsModels = LoadServings();
 
-            List<string> recipeStrings = new();
+            List<string> servingsStrings = new();
 
             foreach (ServingsModel servingModel in servingsModels)
             {
                 if (!string.IsNullOrEmpty(servingModel.Servings))
                 {
-                    recipeStrings.Add(servingModel.Servings);
+                    servingsStrings.Add(servingModel.Servings);
                 }
             }
 
-            return recipeStrings;
+            return servingsStrings;
         }
     }
 
@@ -62,17 +62,17 @@ namespace Cookbook_Database.DatabaseHandler
 
             descriptionModels = LoadDescriptions();
 
-            List<string> recipeStrings = new();
+            List<string> descriptionStrings = new();
 
             foreach (DescriptionModel descriptionModel in descriptionModels)
             {
                 if (!string.IsNullOrEmpty(descriptionModel.Description))
                 {
-                    recipeStrings.Add(descriptionModel.Description);
+                    descriptionStrings.Add(descriptionModel.Description);
                 }
             }
 
-            return recipeStrings;
+            return descriptionStrings;
         }
     }
 
@@ -86,14 +86,14 @@ namespace Cookbook_Database.DatabaseHandler
 
             quantityModels = LoadQuantities();
 
-            List<string> recipeStrings = new();
+            List<string> quantityStrings = new();
 
             foreach (string quantityModel in quantityModels)
             {
-                recipeStrings.Add(quantityModel);
+                quantityStrings.Add(quantityModel);
             }
 
-            return recipeStrings;
+            return quantityStrings;
         }
     }
 
@@ -107,14 +107,14 @@ namespace Cookbook_Database.DatabaseHandler
 
             ingredientNameModels = LoadIngredientNames();
 
-            List<string> recipeStrings = new();
+            List<string> ingredientNameStrings = new();
 
             foreach (string ingredientNameModel in ingredientNameModels)
             {
-                recipeStrings.Add(ingredientNameModel);
+                ingredientNameStrings.Add(ingredientNameModel);
             }
 
-            return recipeStrings;
+            return ingredientNameStrings;
         }
     }
 
@@ -128,14 +128,14 @@ namespace Cookbook_Database.DatabaseHandler
 
             stepModels = LoadSteps();
 
-            List<string> recipeStrings = new();
+            List<string> stepStrings = new();
 
             foreach (int stepModel in stepModels)
             {
-                recipeStrings.Add(stepModel.ToString());
+                stepStrings.Add(stepModel.ToString());
             }
 
-            return recipeStrings;
+            return stepStrings;
         }
     }
 
@@ -149,14 +149,14 @@ namespace Cookbook_Database.DatabaseHandler
 
             instrucitonModels = LoadInstructions();
 
-            List<string> recipeStrings = new();
+            List<string> instructionStrings = new();
 
             foreach (string instructionModel in instrucitonModels)
             {
-                recipeStrings.Add(instructionModel);
+                instructionStrings.Add(instructionModel);
             }
 
-            return recipeStrings;
+            return instructionStrings;
         }
     }
 }

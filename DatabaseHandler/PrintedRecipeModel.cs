@@ -103,17 +103,17 @@ namespace Cookbook_Database
 
             saladModels = LoadSalads();
 
-            List<string> recipeStrings = new();
+            List<string> saladStrings = new();
 
             foreach (SaladModel saladModel in saladModels)
             {
                 if (!string.IsNullOrEmpty(saladModel.Salad))
                 {
-                    recipeStrings.Add(saladModel.Salad);
+                    saladStrings.Add(saladModel.Salad);
                 }
             }
 
-            return recipeStrings;
+            return saladStrings;
         }
     }
 
@@ -127,17 +127,17 @@ namespace Cookbook_Database
 
             soupModels = LoadSoups();
 
-            List<string> recipeStrings = new();
+            List<string> soupStrings = new();
 
             foreach (SoupModel soupModel in soupModels)
             {
                 if (!string.IsNullOrEmpty(soupModel.Soup))
                 {
-                    recipeStrings.Add(soupModel.Soup);
+                    soupStrings.Add(soupModel.Soup);
                 }
             }
 
-            return recipeStrings;
+            return soupStrings;
         }
     }
 
@@ -151,17 +151,17 @@ namespace Cookbook_Database
 
             appetizerModels = LoadAppetizers();
 
-            List<string> recipeStrings = new();
+            List<string> appetizerStrings = new();
 
             foreach (AppetizerModel appetizerModel in appetizerModels)
             {
                 if (!string.IsNullOrEmpty(appetizerModel.Appetizer))
                 {
-                    recipeStrings.Add(appetizerModel.Appetizer);
+                    appetizerStrings.Add(appetizerModel.Appetizer);
                 }
             }
 
-            return recipeStrings;
+            return appetizerStrings;
         }
     }
 
@@ -175,17 +175,17 @@ namespace Cookbook_Database
 
             meatModels = LoadMeat();
 
-            List<string> recipeStrings = new();
+            List<string> meatStrings = new();
 
             foreach (MeatModel meatModel in meatModels)
             {
                 if (!string.IsNullOrEmpty(meatModel.Meat))
                 {
-                    recipeStrings.Add(meatModel.Meat);
+                    meatStrings.Add(meatModel.Meat);
                 }
             }
 
-            return recipeStrings;
+            return meatStrings;
         }
     }
 
@@ -199,17 +199,17 @@ namespace Cookbook_Database
 
             poultryModels = LoadPoultry();
 
-            List<string> recipeStrings = new();
+            List<string> poultryStrings = new();
 
             foreach (PoultryModel poultryModel in poultryModels)
             {
                 if (!string.IsNullOrEmpty(poultryModel.Poultry))
                 {
-                    recipeStrings.Add(poultryModel.Poultry);
+                    poultryStrings.Add(poultryModel.Poultry);
                 }
             }
 
-            return recipeStrings;
+            return poultryStrings;
         }
     }
 
@@ -223,17 +223,17 @@ namespace Cookbook_Database
 
             seafoodModels = LoadSeafood();
 
-            List<string> recipeStrings = new();
+            List<string> seafoodStrings = new();
 
             foreach (SeafoodModel seafoodModel in seafoodModels)
             {
                 if (!string.IsNullOrEmpty(seafoodModel.Seafood))
                 {
-                    recipeStrings.Add(seafoodModel.Seafood);
+                    seafoodStrings.Add(seafoodModel.Seafood);
                 }
             }
 
-            return recipeStrings;
+            return seafoodStrings;
         }
     }
 
@@ -247,17 +247,17 @@ namespace Cookbook_Database
 
             vegetableModels = LoadVegetables();
 
-            List<string> recipeStrings = new();
+            List<string> vegetableStrings = new();
 
             foreach (VegetableModel vegetableModel in vegetableModels)
             {
                 if (!string.IsNullOrEmpty(vegetableModel.Vegetable))
                 {
-                    recipeStrings.Add(vegetableModel.Vegetable);
+                    vegetableStrings.Add(vegetableModel.Vegetable);
                 }
             }
 
-            return recipeStrings;
+            return vegetableStrings;
         }
     }
 
@@ -271,17 +271,17 @@ namespace Cookbook_Database
 
             sideModels = LoadSides();
 
-            List<string> recipeStrings = new();
+            List<string> sideStrings = new();
 
             foreach (SideModel sideModel in sideModels)
             {
                 if (!string.IsNullOrEmpty(sideModel.Side))
                 {
-                    recipeStrings.Add(sideModel.Side);
+                    sideStrings.Add(sideModel.Side);
                 }
             }
 
-            return recipeStrings;
+            return sideStrings;
         }
     }
 
@@ -295,17 +295,17 @@ namespace Cookbook_Database
 
             dessertModels = LoadDesserts();
 
-            List<string> recipeStrings = new();
+            List<string> dessertStrings = new();
 
             foreach (DessertModel dessertModel in dessertModels)
             {
                 if (!string.IsNullOrEmpty(dessertModel.Dessert))
                 {
-                    recipeStrings.Add(dessertModel.Dessert);
+                    dessertStrings.Add(dessertModel.Dessert);
                 }
             }
 
-            return recipeStrings;
+            return dessertStrings;
         }
     }
 
@@ -319,17 +319,17 @@ namespace Cookbook_Database
 
             breakfastModels = LoadBreakfast();
 
-            List<string> recipeStrings = new();
+            List<string> breakfastStrings = new();
 
             foreach (BreakfastModel breakfastModel in breakfastModels)
             {
                 if (!string.IsNullOrEmpty(breakfastModel.Breakfast))
                 {
-                    recipeStrings.Add(breakfastModel.Breakfast);
+                    breakfastStrings.Add(breakfastModel.Breakfast);
                 }
             }
 
-            return recipeStrings;
+            return breakfastStrings;
         }
     }
 
@@ -343,17 +343,17 @@ namespace Cookbook_Database
 
             miscModels = LoadMisc();
 
-            List<string> recipeStrings = new();
+            List<string> miscStrings = new();
 
             foreach (MiscModel miscModel in miscModels)
             {
                 if (!string.IsNullOrEmpty(miscModel.Misc))
                 {
-                    recipeStrings.Add(miscModel.Misc);
+                    miscStrings.Add(miscModel.Misc);
                 }
             }
 
-            return recipeStrings;
+            return miscStrings;
         }
     }
 }
