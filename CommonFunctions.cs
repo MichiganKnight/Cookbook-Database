@@ -33,6 +33,59 @@ namespace Cookbook_Database
             return goBack;
         }
 
+        public static void CreateRecipeButtons(string recipe, Panel recipePanel, Frame frame, bool isPrintedRecipe, ImageBrush? recipeImage = null, Separator? menuSeperator = null, MenuItem? printButton = null)
+        {
+            string labelName = Regex.Replace($"{recipe}Label", @"[^a-zA-Z0-9]+", "");
+            string buttonName = Regex.Replace($"{recipe}Button", @"[^a-zA-Z0-9]+", "");
+
+            Button button = new()
+            {
+                Content = recipe,
+                Cursor = Cursors.Hand,
+                FontSize = 25,
+                FontWeight = FontWeights.Medium,
+                Background = null,
+                Foreground = Brushes.Blue,
+                BorderBrush = Brushes.LightGray,
+                Height = 50,
+                HorizontalAlignment = HorizontalAlignment.Left,
+                Name = ReplaceWithWord(buttonName),
+                Margin = new Thickness(10, 0, 0, 0)
+            };
+
+            button.MouseEnter += (s, e) =>
+            {
+                button.Background = Brushes.LightGray;
+            };
+
+            button.MouseLeave += (s, e) =>
+            {
+                button.Background = Brushes.White;
+            };
+
+            button.Click += (s, e) =>
+            {
+                if (isPrintedRecipe)
+                {
+                    Settings.Default.ButtonName = buttonName;
+                    Settings.Default.PrintedRecipe = recipe;
+                    Settings.Default.LabelName = labelName;
+
+                    frame.Visibility = Visibility.Visible;
+                    frame.NavigationService.Navigate(new PrintedRecipeView());
+                }
+                else
+                {
+                    Settings.Default.CooksCountryRecipeToDisplay = button.Content.ToString();
+
+                    frame.Visibility = Visibility.Visible;
+                    frame.NavigationService.Navigate(new CooksCountryRecipeView());
+                }
+            };
+
+            recipePanel.Children.Add(button);
+        }
+
         /// <summary>
         /// Load image from <see cref="MemoryStream"/>
         /// </summary>
@@ -54,57 +107,6 @@ namespace Cookbook_Database
             }
             image.Freeze();
             return image;
-        }
-
-        /// <summary>
-        /// Show all recipes
-        /// </summary>
-        /// <param name="recipeType">Type of recipes to show</param>
-        public static void ShowRecipes(string recipeType)
-        {
-            switch (recipeType)
-            {
-                case "Salad":
-                    Settings.Default.RecipeType = "Salad";
-                    break;
-                case "Soup":
-                    Settings.Default.RecipeType = "Soup";
-                    break;
-                case "Appetizer":
-                    Settings.Default.RecipeType = "Appetizer";
-                    break;
-                case "Meat":
-                    Settings.Default.RecipeType = "Meat";
-                    break;
-                case "Poultry":
-                    Settings.Default.RecipeType = "Poultry";
-                    break;
-                case "Seafood":
-                    Settings.Default.RecipeType = "Seafood";
-                    break;
-                case "Vegetable":
-                    Settings.Default.RecipeType = "Vegetable";
-                    break;
-                case "Side":
-                    Settings.Default.RecipeType = "Side";
-                    break;
-                case "Dessert":
-                    Settings.Default.RecipeType = "Dessert";
-                    break;
-                case "Breakfast":
-                    Settings.Default.RecipeType = "Breakfast";
-                    break;
-                case "Misc":
-                    Settings.Default.RecipeType = "Misc";
-                    break;
-                default:
-                    break;
-            }
-
-            PrintedRecipes Form = Application.Current.Windows[0] as PrintedRecipes;
-
-            Form.Frame.Visibility = Visibility.Visible;
-            Form.Frame.NavigationService.Navigate(new RecipeView());
         }
 
         /// <summary>
