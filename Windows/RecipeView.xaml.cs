@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Cookbook_Database.DatabaseHandler;
+using System.Collections;
 using System.Globalization;
 using System.Resources;
 using System.Text.RegularExpressions;
@@ -17,7 +18,7 @@ namespace Cookbook_Database.Windows
     /// </summary>
     public partial class RecipeView : Page
     {
-        private readonly ResourceSet ResourceSet = Properties.Resources.ResourceManager.GetResourceSet(CultureInfo.CurrentCulture, true, true);
+        private readonly ResourceSet? ResourceSet = Properties.Resources.ResourceManager.GetResourceSet(CultureInfo.CurrentCulture, true, true);
 
         public RecipeView()
         {
