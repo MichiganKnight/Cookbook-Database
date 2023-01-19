@@ -47,18 +47,6 @@ namespace Cookbook_Database.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string RecipeType {
-            get {
-                return ((string)(this["RecipeType"]));
-            }
-            set {
-                this["RecipeType"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool IsImageVisible {
             get {
@@ -124,6 +112,42 @@ namespace Cookbook_Database.Properties {
             }
             set {
                 this["PreviousPageInfo"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LabelName {
+            get {
+                return ((string)(this["LabelName"]));
+            }
+            set {
+                this["LabelName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ButtonName {
+            get {
+                return ((string)(this["ButtonName"]));
+            }
+            set {
+                this["ButtonName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PrintedRecipe {
+            get {
+                return ((string)(this["PrintedRecipe"]));
+            }
+            set {
+                this["PrintedRecipe"] = value;
             }
         }
     }

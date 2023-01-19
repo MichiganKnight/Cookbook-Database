@@ -12,9 +12,6 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=.\Databases\RecipeDatabase.db;Version=3;</Value>
     </Setting>
-    <Setting Name="RecipeType" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="IsImageVisible" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
@@ -35,6 +32,15 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="PreviousPageInfo" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LabelName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ButtonName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PrintedRecipe" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>
