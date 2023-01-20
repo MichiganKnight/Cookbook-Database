@@ -13,6 +13,8 @@ namespace Cookbook_Database
 {
     public static class CommonFunctions
     {
+        #region Create Recipe Buttons
+
         /// <summary>
         /// Create recipe buttons
         /// </summary>
@@ -76,10 +78,59 @@ namespace Cookbook_Database
             recipePanel.Children.Add(button);
         }
 
+        #endregion
+
         public static void GoBack()
         {
-            MessageBox.Show("Go Back Pressed");
+            if (Settings.Default.PreviousPageInfo == "PrintedRecipes")
+            {
+                /*TitleLabel.Content = "Cookbook Database";
+                SubtitleLabel.Content = "Printed Recipes";
+
+                RecipePanel.Children.Clear();
+                RecipePanel.Visibility = Visibility.Collapsed;
+
+                ButtonPanel.Visibility = Visibility.Visible;*/
+            }
+            else
+            {
+                MessageBox.Show("Incorrect");
+            }
         }
+
+        #region Search
+
+        public static void Search(TextBox textBox)
+        {
+            if (string.IsNullOrEmpty(textBox.Text) || textBox.Text == "Search...")
+            {
+                MessageBox.Show("You must ender a valid recipe");
+            }
+            else
+            {
+                Settings.Default.SearchString = textBox.Text;
+
+                MessageBox.Show("Search has been temporarily disabled");
+
+                // Show Recipes in Search
+            }
+        }
+
+        public static void ChangeFocus(TextBox textBox)
+        {
+            if (textBox.Text == "Search...")
+            {
+                textBox.Text = "";
+            }
+            else
+            {
+                textBox.Text = "Search...";
+            }
+        }
+
+        #endregion
+
+        #region Various Image Usability
 
         /// <summary>
         /// Load image from <see cref="MemoryStream"/>
@@ -103,6 +154,40 @@ namespace Cookbook_Database
             image.Freeze();
             return image;
         }
+
+        /// <summary>
+        /// Print Image
+        /// </summary>
+        /// <param name="image">Image to print</param>
+        public static void PrintImage(BitmapImage image)
+        {
+            DrawingVisual drawingVisual = new();
+
+            using (DrawingContext drawingContext = drawingVisual.RenderOpen())
+            {
+                drawingContext.DrawImage(image, new Rect
+                {
+                    Width = image.Width,
+                    Height = image.Height,
+                });
+            }
+
+            LocalPrintServer printServer = new();
+            PrintQueue? DefaultPrinter = printServer.DefaultPrintQueue;
+            PrintDialog printDialog = new()
+            {
+                PrintQueue = DefaultPrinter
+            };
+
+            if (printDialog.ShowDialog() == true)
+            {
+                printDialog.PrintVisual(drawingVisual, "Print Recipe");
+            }
+        }
+
+        #endregion
+
+        #region Replace Text With Word
 
         /// <summary>
         /// Use <see cref="Regex.Replace(string, MatchEvaluator)"/> to replace the number in a string to its word equivalent
@@ -151,34 +236,6 @@ namespace Cookbook_Database
             return text;
         }
 
-        /// <summary>
-        /// Print Image
-        /// </summary>
-        /// <param name="image">Image to print</param>
-        public static void PrintImage(BitmapImage image)
-        {
-            DrawingVisual drawingVisual = new();
-
-            using (DrawingContext drawingContext = drawingVisual.RenderOpen())
-            {
-                drawingContext.DrawImage(image, new Rect
-                {
-                    Width = image.Width,
-                    Height = image.Height,
-                });
-            }
-
-            LocalPrintServer printServer = new();
-            PrintQueue? DefaultPrinter = printServer.DefaultPrintQueue;
-            PrintDialog printDialog = new()
-            {
-                PrintQueue = DefaultPrinter
-            };
-
-            if (printDialog.ShowDialog() == true)
-            {
-                printDialog.PrintVisual(drawingVisual, "Print Recipe");
-            }
-        }
+        #endregion
     }
 }
