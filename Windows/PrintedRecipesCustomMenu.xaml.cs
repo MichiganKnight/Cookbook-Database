@@ -6,6 +6,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
+using static Cookbook_Database.CommonFunctions;
+
 namespace Cookbook_Database.Windows
 {
     /// <summary>
@@ -34,7 +36,7 @@ namespace Cookbook_Database.Windows
 
         private void GoBackButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Function Not Implemented");
+            GoBack();
         }
 
         #region Mouse Enter & Leave Events

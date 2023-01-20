@@ -14,25 +14,15 @@ namespace Cookbook_Database
     public static class CommonFunctions
     {
         /// <summary>
-        /// Create GoBack button for recipe pages
+        /// Create recipe buttons
         /// </summary>
-        /// <returns><see cref="Label"/> that acts as a button</returns>
-        public static Label CreateGoBackButton()
-        {
-            Label goBack = new()
-            {
-                Content = "Go Back",
-                Cursor = Cursors.Hand,
-                FontSize = 30,
-                FontWeight = FontWeights.Bold,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                Name = "GoBack",
-                VerticalAlignment = VerticalAlignment.Bottom
-            };
-
-            return goBack;
-        }
-
+        /// <param name="recipe">Name of the recipe</param>
+        /// <param name="recipePanel">Recipe panel to add the button to</param>
+        /// <param name="frame">Frame that determines which view to transition to</param>
+        /// <param name="isPrintedRecipe">Is the recipe a printed recipe?</param>
+        /// <param name="recipeImage"><see cref="ImageBrush"/> that displays the printed recipe</param>
+        /// <param name="menuSeperator">A menu seperator</param>
+        /// <param name="printButton">Button to print the recipe</param>
         public static void CreateRecipeButtons(string recipe, Panel recipePanel, Frame frame, bool isPrintedRecipe, ImageBrush? recipeImage = null, Separator? menuSeperator = null, MenuItem? printButton = null)
         {
             string labelName = Regex.Replace($"{recipe}Label", @"[^a-zA-Z0-9]+", "");
@@ -84,6 +74,11 @@ namespace Cookbook_Database
             };
 
             recipePanel.Children.Add(button);
+        }
+
+        public static void GoBack()
+        {
+            MessageBox.Show("Go Back Pressed");
         }
 
         /// <summary>

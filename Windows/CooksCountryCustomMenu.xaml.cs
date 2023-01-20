@@ -6,6 +6,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
+using static Cookbook_Database.CommonFunctions;
+
 namespace Cookbook_Database.Windows
 {
     /// <summary>
@@ -33,21 +35,7 @@ namespace Cookbook_Database.Windows
 
         private void GoBackButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Function Not Implemeneted");
-
-            //MessageBox.Show(Settings.Default.PreviousPageInfo);
-
-            /*switch (Settings.Default.PreviousPageInfo)
-            {
-                case "2018":
-                    MessageBox.Show(Settings.Default.PreviousPageInfo);
-                    break;
-                case "FebMarch":
-                    MessageBox.Show(Settings.Default.PreviousPageInfo);
-                    break;
-                default:
-                    break;
-            }*/
+            GoBack();
         }
 
         #region Mouse Enter & Leave Events

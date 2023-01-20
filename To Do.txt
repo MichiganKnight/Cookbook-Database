@@ -1,10 +1,11 @@
-﻿----Search----
-
-Refine searching for Cooks Country recipes and search by ingredient - DIFFICULT
-
-----UI----
+﻿----UI----
 
 Implement GoBack buttons for both PrintedRecipes & CooksCountryRecipes - PRIORITY
+Recipes go off end of page when there are enough of them, implement a ScrollViewer - PRIORITY
+
+----Search----
+
+Refine searching for Cooks Country recipes and search by ingredient - DIFFICULT
 
 ----Favorites----
 
