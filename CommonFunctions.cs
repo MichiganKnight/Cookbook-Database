@@ -80,24 +80,6 @@ namespace Cookbook_Database
 
         #endregion
 
-        public static void GoBack()
-        {
-            if (Settings.Default.PreviousPageInfo == "PrintedRecipes")
-            {
-                /*TitleLabel.Content = "Cookbook Database";
-                SubtitleLabel.Content = "Printed Recipes";
-
-                RecipePanel.Children.Clear();
-                RecipePanel.Visibility = Visibility.Collapsed;
-
-                ButtonPanel.Visibility = Visibility.Visible;*/
-            }
-            else
-            {
-                MessageBox.Show("Incorrect");
-            }
-        }
-
         #region Search
 
         public static void Search(TextBox textBox)
