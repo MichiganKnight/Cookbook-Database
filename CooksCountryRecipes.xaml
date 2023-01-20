@@ -3,9 +3,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:controls="clr-namespace:Cookbook_Database.Windows"
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1280" Background="White"
+      FontFamily="Verdana"
       Title="CooksCountryRecipes">
 
     <Grid>
@@ -15,7 +15,14 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid HorizontalAlignment="Stretch" Grid.Row="1">
-            <controls:CooksCountryCustomMenu />
+            <Grid Height="50" Background="#FF333333">
+                <Label Name="PrintedRecipesButton" Background="{x:Null}" Foreground="#e5e5e5" Height="50" Width="220" Margin="0,0,0,0" Content="Printed Recipes" FontSize="18" Cursor="Hand" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseUp="PrintedRecipesButton_MouseUp" />
+                <Label Name="GoBackButton" Background="{x:Null}" Foreground="#e5e5e5" Height="50" Width="220" Margin="220,0,0,0" Content="Go Back" FontSize="18" Cursor="Hand" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MouseEnter="Label_MouseEnter" MouseLeave="Label_MouseLeave" MouseUp="GoBackButton_MouseUp" />
+                <TextBox Name="SearchInput" Background="White" Foreground="LightGray" SelectionBrush="LightGray" Height="51" Width="420" Margin="0,-1,50,0" Text="Search..." FontSize="18" HorizontalAlignment="Right" VerticalContentAlignment="Center" GotFocus="SearchInput_GotFocus" LostFocus="SearchInput_LostFocus" TextChanged="SearchInput_TextChanged" KeyDown="SearchInput_KeyDown" />
+                <Border Name="Submit" Background="#e5e5e5" Height="50" Width="50" Cursor="Hand" HorizontalAlignment="Right" MouseEnter="Submit_MouseEnter" MouseLeave="Submit_MouseLeave" MouseUp="Submit_MouseUp">
+                    <Image Source="/Resources/Search.png" Stretch="Fill" />
+                </Border>
+            </Grid>
         </Grid>
         <Border Background="White" Grid.Row="2">
             <StackPanel>

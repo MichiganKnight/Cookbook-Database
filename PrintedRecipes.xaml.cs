@@ -363,5 +363,26 @@ namespace Cookbook_Database
         }
 
         #endregion
+
+        #region Switch Between Recipe Sets
+
+        private void CooksCountryRecipesButton_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            PrintedRecipes Form = Application.Current.Windows[0] as PrintedRecipes;
+
+            Form.Frame.Visibility = Visibility.Visible;
+            Form.Frame.NavigationService.Navigate(new CooksCountryRecipes());
+        }
+
+        #endregion
+
+        #region Go Back
+
+        private void GoBackButton_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        #endregion
     }
 }
