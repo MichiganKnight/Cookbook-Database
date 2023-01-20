@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="1280"
+             Background="#FF333333"
              FontFamily="Verdana"
              FontSize="18">
     <Grid>

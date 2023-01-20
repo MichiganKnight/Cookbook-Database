@@ -14,7 +14,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid HorizontalAlignment="Stretch" Grid.Row="1" Background="#FF333333">
+        <Grid HorizontalAlignment="Stretch" Grid.Row="1">
             <controls:CooksCountryCustomMenu />
         </Grid>
         <Border Background="White" Grid.Row="2">
@@ -31,7 +31,9 @@
                 <StackPanel Name="IssuePanel" Grid.Row="1" Visibility="Collapsed">
                     <Button Name="FebMarchButton" Height="50" Content="February / March Volume" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="25" FontWeight="Medium" Background="{x:Null}" Foreground="Blue" BorderBrush="LightGray" Click="FebMarchButton_Click" MouseEnter="Btn_MouseEnter" MouseLeave="Btn_MouseLeave" />
                 </StackPanel>
-                <StackPanel Name="RecipePanel" Grid.Row="1" />
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Height="860">
+                    <StackPanel Name="RecipePanel" />
+                </ScrollViewer>
             </StackPanel>
         </Border>        
         <Frame x:Name="Frame" Content="Frame" Grid.RowSpan="3" Visibility="Hidden" NavigationUIVisibility="Hidden" />
