@@ -1,6 +1,7 @@
 ﻿using Cookbook_Database.DatabaseHandler;
 using Cookbook_Database.Properties;
-using Cookbook_Database.Windows;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -15,6 +16,8 @@ namespace Cookbook_Database
     /// </summary>
     public partial class PrintedRecipes : Window
     {
+        private readonly List<string>? Recipes = new();
+        
         public PrintedRecipes()
         {
             InitializeComponent();
@@ -22,12 +25,16 @@ namespace Cookbook_Database
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
         }
 
+        #region Button Click Section
+
         private void BtnSalads_Click(object sender, RoutedEventArgs e)
         {
             TitleLabel.Content = "Cookbook Database - Printed Country Recipes";
             SubtitleLabel.Content = "Salad Recipes";
 
             ButtonPanel.Visibility = Visibility.Collapsed;
+
+            Settings.Default.PreviousPageInfo = "PrintedRecipes";
 
             DisplayRecipes("Salad");
         }
@@ -132,6 +139,10 @@ namespace Cookbook_Database
             DisplayRecipes("Misc");
         }
 
+        #endregion
+
+        #region Display Recipes
+
         /// <summary>
         /// Display all recipes of <see cref="Settings.Default.RecipeType"/>
         /// </summary>
@@ -233,6 +244,46 @@ namespace Cookbook_Database
             }
         }
 
+        #endregion
+
+        #region Enter & Leave Functions
+
+        private void Label_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Label? label = sender as Label;
+
+            label.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#ddd");
+            label.Foreground = Brushes.White;
+        }
+
+        private void Label_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Label? label = sender as Label;
+
+            label.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#333");
+            label.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#e5e5e5");
+        }
+
+        private void SearchInput_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ChangeFocus(SearchInput);
+        }
+
+        private void SearchInput_LostFocus(object sender, RoutedEventArgs e)
+        {
+            ChangeFocus(SearchInput);
+        }
+
+        private void Submit_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Submit.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#ddd");
+        }
+
+        private void Submit_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Submit.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#ccc");
+        }
+
         private void Btn_MouseEnter(object sender, MouseEventArgs e)
         {
             Button? button = sender as Button;
@@ -247,12 +298,55 @@ namespace Cookbook_Database
             button.Background = Brushes.White;
         }
 
-        private void ExitButton_Click(object sender, RoutedEventArgs e)
-        {
-            PrintedRecipes? Form = Application.Current.MainWindow as PrintedRecipes;
+        #endregion
 
-            Form.Close();
+        #region Search & Autocomplete Section
+
+        private void Submit_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Search(SearchInput);
         }
+
+        private void SearchInput_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Search(SearchInput);
+            }
+        }
+
+        private string currentInput = "";
+        private string currentSuggestion = "";
+        private string currentText = "";
+
+        private int selectionStart;
+        private int selectionLength;
+
+        private void SearchInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var input = SearchInput.Text;
+
+            if (input.Length > currentInput.Length && input != currentSuggestion)
+            {
+                currentSuggestion = Recipes.FirstOrDefault(x => x.StartsWith(input));
+
+                if (currentSuggestion != null)
+                {
+                    currentText = currentSuggestion;
+                    selectionStart = input.Length;
+                    selectionLength = currentSuggestion.Length - input.Length;
+
+                    SearchInput.Text = currentText;
+                    SearchInput.Select(selectionStart, selectionLength);
+                }
+            }
+
+            currentInput = input;
+        }
+
+        #endregion
+
+        #region Navigation Section
 
         private void Frame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
@@ -263,9 +357,11 @@ namespace Cookbook_Database
 
                 RecipePanel.Children.Clear();
                 RecipePanel.Visibility = Visibility.Collapsed;
-                
+
                 ButtonPanel.Visibility = Visibility.Visible;
             }
         }
+
+        #endregion
     }
 }
