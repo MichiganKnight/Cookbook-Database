@@ -34,8 +34,6 @@ namespace Cookbook_Database
 
             ButtonPanel.Visibility = Visibility.Collapsed;
 
-            Settings.Default.PreviousPageInfo = "PrintedRecipes";
-
             DisplayRecipes("Salad");
         }
 
@@ -149,6 +147,10 @@ namespace Cookbook_Database
         /// <param name="recipeType">Type of recipe</param>
         private void DisplayRecipes(string recipeType)
         {
+            GoBackButton.Visibility = Visibility.Visible;
+
+            Settings.Default.PreviousPageInfo = "PrintedRecipes";
+
             switch (recipeType)
             {
                 case "Salad":
@@ -370,6 +372,8 @@ namespace Cookbook_Database
         {
             PrintedRecipes Form = Application.Current.Windows[0] as PrintedRecipes;
 
+            GoBackButton.Visibility = Visibility.Hidden;
+
             Form.Frame.Visibility = Visibility.Visible;
             Form.Frame.NavigationService.Navigate(new CooksCountryRecipes());
         }
@@ -380,7 +384,19 @@ namespace Cookbook_Database
 
         private void GoBackButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            if (Settings.Default.PreviousPageInfo == "PrintedRecipes")
+            {
+                TitleLabel.Content = "Cookbook Database";
+                SubtitleLabel.Content = "Printed Recipes";
 
+                RecipePanel.Children.Clear();
+                RecipePanel.Visibility = Visibility.Collapsed;
+
+                ButtonPanel.Visibility = Visibility.Visible;
+
+                GoBackButton.Visibility = Visibility.Hidden;
+                Settings.Default.PreviousPageInfo = "";
+            }
         }
 
         #endregion

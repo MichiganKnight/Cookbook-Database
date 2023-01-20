@@ -1,7 +1,6 @@
 ﻿----UI----
 
-Implement GoBack buttons for both PrintedRecipes & CooksCountryRecipes - PRIORITY
-Recipes go off end of page when there are enough of them, implement a ScrollViewer - PRIORITY
+Implement GoBack buttons for CooksCountryRecipes - PRIORITY
 
 ----Search----
 

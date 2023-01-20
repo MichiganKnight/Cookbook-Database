@@ -23,15 +23,33 @@ namespace Cookbook_Database
             InitializeComponent();
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (Settings.Default.PreviousPageInfo == "Recipe")
+            {
+                GoBackButton.Visibility = Visibility.Visible;
+
+                Settings.Default.PreviousPageInfo = "Unknown";
+
+                TitleLabel.Content = "Cookbook Database - Cooks Country Recipes";
+                SubtitleLabel.Content = "Unknown Volume";
+
+                YearPanel.Visibility = Visibility.Collapsed;
+                IssuePanel.Visibility = Visibility.Visible;
+            }
+        }
+
         #region Button Click Section
 
         private void Button_2018_Click(object sender, RoutedEventArgs e)
         {
-            Settings.Default.CooksCountryYear = "2018";
-            //Settings.Default.PreviousPageInfo = "2018";
+            Settings.Default.PreviousPageInfo = "2018";
+            Settings.Default.RecipeYear = "2018";
+
+            GoBackButton.Visibility = Visibility.Visible;
 
             TitleLabel.Content = "Cookbook Database - Cooks Country Recipes";
-            SubtitleLabel.Content = $"{Settings.Default.CooksCountryYear} Issue";
+            SubtitleLabel.Content = "2018 Issue";
 
             YearPanel.Visibility = Visibility.Collapsed;
 
@@ -40,11 +58,11 @@ namespace Cookbook_Database
 
         private void FebMarchButton_Click(object sender, RoutedEventArgs e)
         {
-            Settings.Default.CooksCountryIssue = "February / March";
-            //Settings.Default.PreviousPageInfo = "February / March";
+            Settings.Default.PreviousPageInfo = "February / March";
+            Settings.Default.RecipeIssue = "February / March";
 
             TitleLabel.Content = "Cookbook Database - Cooks Country Recipes";
-            SubtitleLabel.Content = $"{Settings.Default.CooksCountryIssue} Volume";
+            SubtitleLabel.Content = "February / March Volume";
 
             IssuePanel.Visibility = Visibility.Collapsed;
 
@@ -191,6 +209,8 @@ namespace Cookbook_Database
         {
             PrintedRecipes? Form = Application.Current.Windows[0] as PrintedRecipes;
 
+            GoBackButton.Visibility = Visibility.Hidden;
+
             Form.Frame.Visibility = Visibility.Collapsed;
         }
 
@@ -200,7 +220,31 @@ namespace Cookbook_Database
 
         private void GoBackButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            switch (Settings.Default.PreviousPageInfo)
+            {
+                case "2018":
+                    TitleLabel.Content = "Cookbook Database";
+                    SubtitleLabel.Content = "Cooks Country Recipes";
 
+                    YearPanel.Visibility = Visibility.Visible;
+                    IssuePanel.Visibility = Visibility.Collapsed;
+
+                    GoBackButton.Visibility = Visibility.Hidden;
+                    Settings.Default.PreviousPageInfo = "";
+                    break;
+                case "February / March":
+                    TitleLabel.Content = "Cookbook Database - Cooks Country Recipes";
+                    SubtitleLabel.Content = "2018 Issue";
+
+                    RecipePanel.Children.Clear();
+
+                    IssuePanel.Visibility = Visibility.Visible;
+
+                    Settings.Default.PreviousPageInfo = "2018";
+                    break;
+                default:
+                    break;
+            }
         }
 
         #endregion

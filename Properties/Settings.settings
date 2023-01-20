@@ -25,12 +25,6 @@
     <Setting Name="CooksCountryRecipeToDisplay" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="CooksCountryYear" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="CooksCountryIssue" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="PreviousPageInfo" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
@@ -41,6 +35,12 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="PrintedRecipe" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="RecipeYear" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="RecipeIssue" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

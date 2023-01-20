@@ -21,6 +21,8 @@ namespace Cookbook_Database.Windows
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            Settings.Default.PreviousPageInfo = "Recipe";
+
             foreach (string name in NameModel.NameModelToString())
             {
                 CreateLabels(name, NamePanel, 50, Brushes.Maroon, FontWeights.Bold);

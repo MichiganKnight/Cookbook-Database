@@ -82,30 +82,6 @@ namespace Cookbook_Database.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string CooksCountryYear {
-            get {
-                return ((string)(this["CooksCountryYear"]));
-            }
-            set {
-                this["CooksCountryYear"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string CooksCountryIssue {
-            get {
-                return ((string)(this["CooksCountryIssue"]));
-            }
-            set {
-                this["CooksCountryIssue"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string PreviousPageInfo {
             get {
                 return ((string)(this["PreviousPageInfo"]));
@@ -148,6 +124,30 @@ namespace Cookbook_Database.Properties {
             }
             set {
                 this["PrintedRecipe"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string RecipeYear {
+            get {
+                return ((string)(this["RecipeYear"]));
+            }
+            set {
+                this["RecipeYear"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string RecipeIssue {
+            get {
+                return ((string)(this["RecipeIssue"]));
+            }
+            set {
+                this["RecipeIssue"] = value;
             }
         }
     }

@@ -73,20 +73,6 @@ namespace Cookbook_Database.Windows
         }
 
         /// <summary>
-        /// Go back from recipe image and call <see cref="SwitchBetweenRecipeTypes"/>
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void GoBackFromImageButton_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            RecipePanel.Children.Clear();
-
-            RecipeImage.ImageSource = null;
-
-            //SwitchBetweenRecipeTypes();
-        }
-
-        /// <summary>
         /// Print 
         /// </summary>
         /// <param name="sender"></param>
@@ -115,16 +101,18 @@ namespace Cookbook_Database.Windows
         /// <param name="e"></param>
         private void GoBackButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Properties.Settings.Default.IsImageVisible == true)
+            if (Settings.Default.IsImageVisible == true)
             {
-                //SwitchBetweenRecipeTypes();
-
                 RecipeImage.ImageSource = null;
 
                 MenuSeperator.Visibility = Visibility.Collapsed;
                 PrintButton.Visibility = Visibility.Collapsed;
 
-                Properties.Settings.Default.IsImageVisible = false;
+                Settings.Default.IsImageVisible = false;
+
+                PrintedRecipes? Form = Application.Current.MainWindow as PrintedRecipes;
+
+                Form.Frame.Visibility = Visibility.Collapsed;
             }
             else
             {
