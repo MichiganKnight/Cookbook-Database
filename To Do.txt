@@ -1,8 +1,4 @@
-﻿----UI----
-
-Implement GoBack buttons for CooksCountryRecipes - PRIORITY
-
-----Search----
+﻿----Search----
 
 Refine searching for Cooks Country recipes and search by ingredient - DIFFICULT
 
