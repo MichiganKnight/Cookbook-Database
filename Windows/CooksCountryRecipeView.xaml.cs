@@ -21,7 +21,7 @@ namespace Cookbook_Database.Windows
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Settings.Default.PreviousPageInfo = "Recipe";
+            Settings.Default.PreviousPageInfo = $"{Settings.Default.PreviousPageInfo} - Recipe";
 
             foreach (string name in NameModel.NameModelToString())
             {

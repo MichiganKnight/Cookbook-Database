@@ -23,33 +23,42 @@ namespace Cookbook_Database
             InitializeComponent();
         }
 
+        #region Page Loaded Function
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if (Settings.Default.PreviousPageInfo == "Recipe")
+            if (Settings.Default.PreviousPageInfo.EndsWith("Recipe"))
             {
                 GoBackButton.Visibility = Visibility.Visible;
 
-                Settings.Default.PreviousPageInfo = "Unknown";
+                Settings.Default.PreviousPageInfo = $"{Settings.Default.PreviousPageInfo}".Replace(" - Recipe", "");
 
                 TitleLabel.Content = "Cookbook Database - Cooks Country Recipes";
-                SubtitleLabel.Content = "Unknown Volume";
+                SubtitleLabel.Content = Settings.Default.RecipeIssue;
 
                 YearPanel.Visibility = Visibility.Collapsed;
-                IssuePanel.Visibility = Visibility.Visible;
+                IssuePanel.Visibility = Visibility.Collapsed;
+
+                DisplayRecipeNames();
             }
         }
+
+        #endregion        
 
         #region Button Click Section
 
         private void Button_2018_Click(object sender, RoutedEventArgs e)
         {
-            Settings.Default.PreviousPageInfo = "2018";
-            Settings.Default.RecipeYear = "2018";
+            Button? button = sender as Button;
+
+            SetPreviousPageInfo(button);
+
+            Settings.Default.RecipeYear = button.Content.ToString().Replace(" Issue", "");
 
             GoBackButton.Visibility = Visibility.Visible;
 
             TitleLabel.Content = "Cookbook Database - Cooks Country Recipes";
-            SubtitleLabel.Content = "2018 Issue";
+            SubtitleLabel.Content = button.Content.ToString();
 
             YearPanel.Visibility = Visibility.Collapsed;
 
@@ -58,11 +67,14 @@ namespace Cookbook_Database
 
         private void FebMarchButton_Click(object sender, RoutedEventArgs e)
         {
-            Settings.Default.PreviousPageInfo = "February / March";
-            Settings.Default.RecipeIssue = "February / March";
+            Button? button = sender as Button;
+
+            SetPreviousPageInfo(null, button.Content.ToString());
+
+            Settings.Default.RecipeIssue = $"{Settings.Default.RecipeYear} Issue - February / March Volume";
 
             TitleLabel.Content = "Cookbook Database - Cooks Country Recipes";
-            SubtitleLabel.Content = "February / March Volume";
+            SubtitleLabel.Content = Settings.Default.RecipeIssue;
 
             IssuePanel.Visibility = Visibility.Collapsed;
 
@@ -220,30 +232,40 @@ namespace Cookbook_Database
 
         private void GoBackButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            switch (Settings.Default.PreviousPageInfo)
+            if (Settings.Default.PreviousPageInfo.EndsWith("Issue"))
             {
-                case "2018":
-                    TitleLabel.Content = "Cookbook Database";
-                    SubtitleLabel.Content = "Cooks Country Recipes";
+                TitleLabel.Content = "Cookbook Database";
+                SubtitleLabel.Content = "Cooks Country Recipes";
 
-                    YearPanel.Visibility = Visibility.Visible;
-                    IssuePanel.Visibility = Visibility.Collapsed;
+                YearPanel.Visibility = Visibility.Visible;
+                IssuePanel.Visibility = Visibility.Collapsed;
 
-                    GoBackButton.Visibility = Visibility.Hidden;
-                    Settings.Default.PreviousPageInfo = "";
-                    break;
-                case "February / March":
-                    TitleLabel.Content = "Cookbook Database - Cooks Country Recipes";
-                    SubtitleLabel.Content = "2018 Issue";
+                GoBackButton.Visibility = Visibility.Hidden;
+                Settings.Default.PreviousPageInfo = "";
+                Settings.Default.RecipeYear = "";
+            }
+            else if (Settings.Default.PreviousPageInfo.EndsWith("Volume"))
+            {
+                TitleLabel.Content = "Cookbook Database - Cooks Country Recipes";
+                SubtitleLabel.Content = $"{Settings.Default.RecipeYear} Issue";
 
-                    RecipePanel.Children.Clear();
+                RecipePanel.Children.Clear();
 
-                    IssuePanel.Visibility = Visibility.Visible;
+                IssuePanel.Visibility = Visibility.Visible;
 
-                    Settings.Default.PreviousPageInfo = "2018";
-                    break;
-                default:
-                    break;
+                Settings.Default.PreviousPageInfo = $"{Settings.Default.RecipeYear} Issue";
+            }
+        }
+
+        private static void SetPreviousPageInfo(Button? button = null, string additionalText = "")
+        {
+            if (!string.IsNullOrEmpty(Settings.Default.PreviousPageInfo))
+            {
+                Settings.Default.PreviousPageInfo = $"{Settings.Default.PreviousPageInfo} - {additionalText}";
+            }
+            else
+            {
+                Settings.Default.PreviousPageInfo = button.Content.ToString();
             }
         }
 
