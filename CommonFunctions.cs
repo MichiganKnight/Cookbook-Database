@@ -60,7 +60,7 @@ namespace Cookbook_Database
                 if (recipeType == "Printed")
                 {
                     Settings.Default.ButtonName = buttonName;
-                    Settings.Default.PrintedRecipe = recipe;
+                    Settings.Default.RecipeString = recipe;
                     Settings.Default.LabelName = labelName;
 
                     frame.Visibility = Visibility.Visible;
@@ -75,6 +75,10 @@ namespace Cookbook_Database
                 }
                 else if (recipeType == "SearchRecipeView")
                 {
+                    Settings.Default.ButtonName = buttonName;
+                    Settings.Default.RecipeString = recipe;
+                    Settings.Default.LabelName = labelName;
+
                     frame.Visibility = Visibility.Visible;
                     frame.NavigationService.Navigate(new SearchRecipeView());
                 }
@@ -106,13 +110,13 @@ namespace Cookbook_Database
 
         public static void ChangeFocus(TextBox textBox)
         {
-            if (textBox.Text == "SearchRecipeView...")
+            if (textBox.Text == "Search...")
             {
                 textBox.Text = "";
             }
             else
             {
-                textBox.Text = "SearchRecipeView...";
+                textBox.Text = "Search...";
             }
         }
 

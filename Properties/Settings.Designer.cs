@@ -118,12 +118,12 @@ namespace Cookbook_Database.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string PrintedRecipe {
+        public string RecipeString {
             get {
-                return ((string)(this["PrintedRecipe"]));
+                return ((string)(this["RecipeString"]));
             }
             set {
-                this["PrintedRecipe"] = value;
+                this["RecipeString"] = value;
             }
         }
         

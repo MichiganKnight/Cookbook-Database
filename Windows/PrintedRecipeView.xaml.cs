@@ -32,7 +32,7 @@ namespace Cookbook_Database.Windows
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ShowRecipeImage(Settings.Default.ButtonName, Settings.Default.PrintedRecipe, Settings.Default.LabelName);
+            ShowRecipeImage(Settings.Default.ButtonName, Settings.Default.RecipeString, Settings.Default.LabelName);
         }
 
         private void ShowRecipeImage(string buttonName, string recipe, string labelName)
