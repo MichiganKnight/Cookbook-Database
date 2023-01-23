@@ -76,6 +76,7 @@ namespace Cookbook_Database
                 }
                 else if (recipeType == "Search")
                 {
+                    Settings.Default.CooksCountryRecipeToDisplay = button.Content.ToString();
                     Settings.Default.ButtonName = buttonName;
                     Settings.Default.RecipeString = recipe;
                     Settings.Default.LabelName = labelName;
