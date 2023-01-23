@@ -33,7 +33,23 @@ namespace Cookbook_Database.Windows
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ShowRecipeImage(Settings.Default.ButtonName, Settings.Default.RecipeString, Settings.Default.LabelName);
+            if (Settings.Default.RecipeType == "Printed")
+            {
+                PrintButton.Visibility = Visibility.Visible;
+                MenuSeperator.Visibility = Visibility.Visible;
+                PrintedScrollViewer.Visibility = Visibility.Visible;
+
+                ShowRecipeImage(Settings.Default.ButtonName, Settings.Default.RecipeString, Settings.Default.LabelName);
+            }
+            else if (Settings.Default.RecipeType == "Cooks Country")
+            {
+                PrintButton.Visibility = Visibility.Collapsed;
+                MenuSeperator.Visibility = Visibility.Collapsed;
+
+                CooksCountryScrollViewer.Visibility = Visibility.Visible;
+
+                CreateRecipeSections(NamePanel, ServingsPanel, DescriptionPanel, QuantityPanel, IngredientPanel, StepPanel, InstructionPanel);
+            }
         }
 
         private void ShowRecipeImage(string buttonName, string recipe, string labelName)

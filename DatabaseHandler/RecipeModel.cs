@@ -382,6 +382,30 @@ namespace Cookbook_Database.DatabaseHandler
         }
     }
 
+    public class SearchByNameModel
+    {
+        public string? Name { get; set; }
+
+        public static List<string> NameModelToString()
+        {
+            List<SearchByNameModel> searchByNameModels = new();
+
+            searchByNameModels = LoadSearchByNames();
+
+            List<string> searchByNameStrings = new();
+
+            foreach(SearchByNameModel searchByNameModel in searchByNameModels)
+            {
+                if (!string.IsNullOrEmpty(searchByNameModel.Name))
+                {
+                    searchByNameStrings.Add(searchByNameModel.Name);
+                }
+            }
+
+            return searchByNameStrings;
+        }
+    }
+
     public class ServingsModel
     {
         public string? Servings { get; set; }

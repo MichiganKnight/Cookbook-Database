@@ -11,14 +11,44 @@
         <DockPanel Width="250" LastChildFill="False" VerticalAlignment="Top" HorizontalAlignment="Left" Panel.ZIndex="1">
             <Menu x:Name="RecipeMenu" DockPanel.Dock="Top" FontSize="18">
                 <MenuItem Header="File" Cursor="Hand">
-                    <MenuItem Name="PrintButton" Header="Print" Cursor="Hand" Click="PrintButton_Click" />
-                    <Separator Name="MenuSeperator" />
+                    <MenuItem Name="PrintButton" Header="Print" Cursor="Hand" Click="PrintButton_Click" Visibility="Collapsed" />
+                    <Separator Name="MenuSeperator" Visibility="Collapsed" />
                     <MenuItem Name="ExitButton" Header="Exit" Cursor="Hand" Click="ExitButton_Click" />
                 </MenuItem>
                 <MenuItem Name="GoBackButton" Header="Go Back" Cursor="Hand" Click="GoBackButton_Click" />
             </Menu>
         </DockPanel>
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer Name="CooksCountryScrollViewer" VerticalScrollBarVisibility="Visible" Height="1010" VerticalAlignment="Top" Visibility="Collapsed">
+            <StackPanel>
+                <StackPanel Name="DescriptionPanel">
+                    <StackPanel Name="ServingsPanel">
+                        <StackPanel Name="NamePanel" />
+                        <Separator/>
+                    </StackPanel>
+                </StackPanel>
+                <Separator/>
+                <Label Content="Ingredients:" FontSize="30" FontWeight="Medium" Background="{x:Null}" Foreground="Maroon" Height="50" HorizontalAlignment="Center" />
+                <Grid HorizontalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Name="QuantityPanel" Grid.Column="0" Orientation="Vertical" />
+                    <StackPanel Name="IngredientPanel" Grid.Column="1" Orientation="Vertical" />
+                </Grid>
+                <Separator/>
+                <Label Content="Instructions:" FontSize="30" FontWeight="Medium" Background="{x:Null}" Foreground="Maroon" Height="50" HorizontalAlignment="Center" />
+                <Grid HorizontalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Name="StepPanel" Grid.Column="0" Orientation="Vertical" />
+                    <StackPanel Name="InstructionPanel" Grid.Column="1" Orientation="Vertical"/>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+        <ScrollViewer Name="PrintedScrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Visibility="Collapsed">
             <StackPanel Name="RecipePanel">
                 <StackPanel.Background>
                     <ImageBrush x:Name="RecipeImage" Stretch="Uniform"/>

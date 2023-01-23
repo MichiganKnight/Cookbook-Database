@@ -150,5 +150,17 @@ namespace Cookbook_Database.Properties {
                 this["RecipeIssue"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string RecipeType {
+            get {
+                return ((string)(this["RecipeType"]));
+            }
+            set {
+                this["RecipeType"] = value;
+            }
+        }
     }
 }

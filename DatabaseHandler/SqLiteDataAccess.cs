@@ -40,7 +40,7 @@ namespace Cookbook_Database
                 .ToList();
 
             return recipeModels;
-        }        
+        }
 
         public static List<NameModel> LoadNames()
         {
@@ -51,6 +51,17 @@ namespace Cookbook_Database
             List<NameModel>? nameModels = name.ToList();
 
             return nameModels;
+        }
+
+        public static List<SearchByNameModel> LoadSearchByNames()
+        {
+            using IDbConnection cnn = new SQLiteConnection(LoadCooksCountryRecipeConnectionString());
+
+            var name = cnn.Query<SearchByNameModel>($"select Name from Recipe where Name like '%{Settings.Default.SearchString}%' order by Id asc", new DynamicParameters());
+
+            List<SearchByNameModel>? searchByNameModels = name.ToList();
+
+            return searchByNameModels;
         }
 
         public static List<ServingsModel> LoadServings()

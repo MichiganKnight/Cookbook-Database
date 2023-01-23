@@ -1,4 +1,5 @@
-﻿using Cookbook_Database.Properties;
+﻿using Cookbook_Database.DatabaseHandler;
+using Cookbook_Database.Properties;
 using Cookbook_Database.Windows;
 using System.IO;
 using System.Printing;
@@ -73,7 +74,7 @@ namespace Cookbook_Database
                     frame.Visibility = Visibility.Visible;
                     frame.NavigationService.Navigate(new CooksCountryRecipeView());
                 }
-                else if (recipeType == "SearchRecipeView")
+                else if (recipeType == "Search")
                 {
                     Settings.Default.ButtonName = buttonName;
                     Settings.Default.RecipeString = recipe;
@@ -85,6 +86,144 @@ namespace Cookbook_Database
             };
 
             recipePanel.Children.Add(button);
+        }
+
+        #endregion
+
+        #region Create Recipe Sections
+
+        public static void CreateRecipeSections(StackPanel NamePanel, StackPanel ServingsPanel, StackPanel DescriptionPanel, StackPanel QuantityPanel, StackPanel IngredientPanel, StackPanel StepPanel, StackPanel InstructionPanel)
+        {
+            foreach (string name in NameModel.NameModelToString())
+            {
+                CreateLabels(name, NamePanel, 50, Brushes.Maroon, FontWeights.Bold);
+            }
+
+            foreach (string serving in ServingsModel.ServingsModelToString())
+            {
+                CreateLabels($"Serves {serving}", ServingsPanel, 50, Brushes.Maroon, FontWeights.Medium);
+            }
+
+            foreach (string description in DescriptionModel.DescriptionModelToString())
+            {
+                CreateTextBlocks(description, DescriptionPanel, false);
+            }
+
+            foreach (string quantity in QuantityModel.QuantityModelToString())
+            {
+                CreateLabels(quantity, QuantityPanel, 50, Brushes.Black, FontWeights.Medium);
+            }
+
+            foreach (string ingredient in IngredientNameModel.IngredientModelToString())
+            {
+                CreateLabels(ingredient, IngredientPanel, 50, Brushes.Black, FontWeights.Medium);
+            }
+
+            foreach (string step in StepModel.StepModelToString())
+            {
+                CreateLabels($"Step {step}:", StepPanel, 100, 300);
+            }
+
+            foreach (string instruction in InstructionModel.InstructionModelToString())
+            {
+                CreateTextBlocks(instruction, InstructionPanel, true);
+            }
+        }
+
+        private static void CreateLabels(string text, StackPanel panel, int width, int height)
+        {
+            string name = Regex.Replace($"{text}Label", @"[^a-zA-Z0-9]+", "");
+
+            Label label = new()
+            {
+                Content = text.Replace("Label", ""),
+                FontSize = 25,
+                FontWeight = FontWeights.Medium,
+                Background = null,
+                Foreground = Brushes.Black,
+                Width = width,
+                Height = height,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Name = ReplaceWithWord(name)
+            };
+
+            panel.Children.Add(label);
+        }
+
+        private static void CreateLabels(string text, StackPanel panel, int height, SolidColorBrush solidColorBrush, FontWeight fontWeight)
+        {
+            string name = Regex.Replace($"{text}Label", @"[^a-zA-Z0-9]+", "");
+
+            Label label = new()
+            {
+                Content = text.Replace("Label", ""),
+                FontSize = 25,
+                FontWeight = fontWeight,
+                Background = null,
+                Foreground = solidColorBrush,
+                Height = height,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Name = ReplaceWithWord(name)
+            };
+
+            panel.Children.Add(label);
+        }
+
+        private static void CreateTextBlocks(string text, Panel panel, bool needsScrollbar)
+        {
+            string name = Regex.Replace($"{text}TextBlock", @"[^a-zA-Z0-9]+", "");
+
+            if (needsScrollbar)
+            {
+                Border border = new()
+                {
+                    Height = 300
+                };
+
+                ScrollViewer scrollViewer = new()
+                {
+                    VerticalScrollBarVisibility = ScrollBarVisibility.Auto
+                };
+
+                TextBlock textBlock = new()
+                {
+                    Text = text.Replace("TextBlock", ""),
+                    FontSize = 25,
+                    FontWeight = FontWeights.Medium,
+                    Background = null,
+                    Foreground = Brushes.Black,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    TextAlignment = TextAlignment.Left,
+                    Name = ReplaceWithWord(name),
+                    TextWrapping = TextWrapping.Wrap,
+                    Width = 750,
+                    Margin = new Thickness(0, 5, 0, 0)
+                };
+
+                scrollViewer.Content = textBlock;
+
+                border.Child = scrollViewer;
+
+                panel.Children.Add(border);
+            }
+            else
+            {
+                TextBlock textBlock = new()
+                {
+                    Text = text.Replace("TextBlock", ""),
+                    FontSize = 25,
+                    FontWeight = FontWeights.Medium,
+                    Background = null,
+                    Foreground = Brushes.Black,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    TextAlignment = TextAlignment.Center,
+                    Name = ReplaceWithWord(name),
+                    TextWrapping = TextWrapping.Wrap,
+                    Width = 500
+                };
+
+                panel.Children.Add(textBlock);
+            }
         }
 
         #endregion

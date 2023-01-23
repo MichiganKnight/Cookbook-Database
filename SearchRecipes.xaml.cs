@@ -1,7 +1,7 @@
 ﻿using Cookbook_Database.DatabaseHandler;
+using Cookbook_Database.Properties;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -27,7 +27,16 @@ namespace Cookbook_Database
         {
             foreach (string recipe in AllPrintedRecipeModel.AllPrintedRecipeModelToString())
             {
-                CreateRecipeButtons(recipe, RecipePanel, Frame, "SearchRecipeView");
+                CreateRecipeButtons(recipe, RecipePanel, Frame, "Search");
+
+                Settings.Default.RecipeType = "Printed";
+            }
+
+            foreach (string recipe in SearchByNameModel.NameModelToString())
+            {
+                CreateRecipeButtons(recipe, RecipePanel, Frame, "Search");
+
+                Settings.Default.RecipeType = "Cooks Country";
             }
         }
 
