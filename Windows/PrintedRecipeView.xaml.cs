@@ -35,7 +35,7 @@ namespace Cookbook_Database.Windows
             ShowRecipeImage(Settings.Default.ButtonName, Settings.Default.PrintedRecipe, Settings.Default.LabelName);
         }
 
-        public void ShowRecipeImage(string buttonName, string recipe, string labelName)
+        private void ShowRecipeImage(string buttonName, string recipe, string labelName)
         {
             foreach (DictionaryEntry entry in ResourceSet)
             {

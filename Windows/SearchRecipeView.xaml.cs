@@ -1,4 +1,5 @@
 ﻿using Cookbook_Database.DatabaseHandler;
+using Cookbook_Database.Properties;
 using System.Collections;
 using System.Globalization;
 using System.Resources;
@@ -32,7 +33,44 @@ namespace Cookbook_Database.Windows
         /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            CreateRecipeItems();
+            ShowRecipeImage(Settings.Default.ButtonName, Settings.Default.PrintedRecipe, Settings.Default.LabelName);
+        }
+
+        private void ShowRecipeImage(string buttonName, string recipe, string labelName)
+        {
+            foreach (DictionaryEntry entry in ResourceSet)
+            {
+                string name = entry.Key.ToString();
+                object resource = entry.Value;
+
+                if ($"{Regex.Replace(ReplaceWithWord(name), @"[^a-zA-Z]+", "")}Button" == buttonName)
+                {
+                    RecipeImage.ImageSource = LoadImage((byte[])resource);
+
+                    RecipePanel.Children.Clear();
+
+                    Settings.Default.IsImageVisible = true;
+
+                    MenuSeperator.Visibility = Visibility.Visible;
+                    PrintButton.Visibility = Visibility.Visible;
+
+                    Label label = new()
+                    {
+                        Content = recipe,
+                        FontSize = 25,
+                        FontWeight = FontWeights.Bold,
+                        Background = null,
+                        Foreground = Brushes.Maroon,
+                        Height = 50,
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        Name = ReplaceWithWord(labelName)
+                    };
+
+                    RecipePanel.Children.Add(label);
+
+                    break;
+                }
+            }
         }
 
         /// <summary>
@@ -58,113 +96,32 @@ namespace Cookbook_Database.Windows
         }
 
         /// <summary>
-        /// Go back from recipe image and call <see cref="DisplayRecipes"/>
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void GoBackFromImageButton_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            RecipePanel.Children.Clear();
-
-            RecipeImage.ImageSource = null;
-
-            CreateRecipeItems();
-        }
-
-        /// <summary>
-        /// Go back from generic recipe to the <see cref="MainWindow"/>
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void GoBackButton_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            PrintedRecipes? Form = Application.Current.MainWindow as PrintedRecipes;
-
-            Form.Frame.Visibility = Visibility.Collapsed;
-        }
-
-        /// <summary>
-        /// Create the recipe button items
-        /// </summary>
-        private void CreateRecipeItems()
-        {
-            foreach (string recipe in AllPrintedRecipeModel.AllPrintedRecipeModelToString())
-            {
-                string name = Regex.Replace($"{recipe}Button", @"[^a-zA-Z0-9]+", "");
-
-                Button button = new()
-                {
-                    Content = recipe,
-                    Cursor = Cursors.Hand,
-                    FontSize = 25,
-                    FontWeight = FontWeights.Medium,
-                    Background = null,
-                    Foreground = Brushes.Blue,
-                    Height = 50,
-                    HorizontalAlignment = HorizontalAlignment.Center,
-                    Name = ReplaceWithWord(name),
-                };
-
-                button.MouseEnter += (s, e) =>
-                {
-                    button.Background = Brushes.LightGray;
-                };
-
-                button.MouseLeave += (s, e) =>
-                {
-                    button.Background = Brushes.White;
-                };
-
-                button.Click += (s, e) =>
-                {
-                    foreach (DictionaryEntry entry in ResourceSet)
-                    {
-                        string name = entry.Key.ToString();
-                        object resource = entry.Value;
-
-                        if ($"{Regex.Replace(ReplaceWithWord(name), @"[^a-zA-Z]+", "")}Button" == button.Name)
-                        {
-                            RecipeImage.ImageSource = LoadImage((byte[])resource);
-
-                            RecipePanel.Children.Clear();
-
-                            Properties.Settings.Default.IsImageVisible = true;
-
-                            MenuSeperator.Visibility = Visibility.Visible;
-                            PrintButton.Visibility = Visibility.Visible;
-
-                            break;
-                        }
-                    }
-                };
-
-                RecipePanel.Children.Add(button);
-            }
-        }
-
-        /// <summary>
         /// Go back button
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void GoBackButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Properties.Settings.Default.IsImageVisible == true)
+            if (Settings.Default.IsImageVisible == true)
             {
-                CreateRecipeItems();
-
                 RecipeImage.ImageSource = null;
 
                 MenuSeperator.Visibility = Visibility.Collapsed;
                 PrintButton.Visibility = Visibility.Collapsed;
 
-                Properties.Settings.Default.IsImageVisible = false;
+                Settings.Default.IsImageVisible = false;
+
+                PrintedRecipes? Form = Application.Current.MainWindow as PrintedRecipes;
+
+                Form.Frame.Visibility = Visibility.Visible;
+                Form.Frame.NavigationService.Navigate(new SearchRecipes());
             }
             else
             {
                 PrintedRecipes? Form = Application.Current.MainWindow as PrintedRecipes;
 
-                Form.Frame.Visibility = Visibility.Collapsed;
+                Form.Frame.Visibility = Visibility.Visible;
+                Form.Frame.NavigationService.Navigate(new SearchRecipes());
             }
         }
 
