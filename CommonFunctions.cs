@@ -25,7 +25,7 @@ namespace Cookbook_Database
         /// <param name="recipeImage"><see cref="ImageBrush"/> that displays the printed recipe</param>
         /// <param name="menuSeperator">A menu seperator</param>
         /// <param name="printButton">Button to print the recipe</param>
-        public static void CreateRecipeButtons(string recipe, Panel recipePanel, Frame frame, bool isPrintedRecipe, ImageBrush? recipeImage = null, Separator? menuSeperator = null, MenuItem? printButton = null)
+        public static void CreateRecipeButtons(string recipe, Panel recipePanel, Frame frame, string recipeType, ImageBrush? recipeImage = null, Separator? menuSeperator = null, MenuItem? printButton = null)
         {
             string labelName = Regex.Replace($"{recipe}Label", @"[^a-zA-Z0-9]+", "");
             string buttonName = Regex.Replace($"{recipe}Button", @"[^a-zA-Z0-9]+", "");
@@ -57,7 +57,7 @@ namespace Cookbook_Database
 
             button.Click += (s, e) =>
             {
-                if (isPrintedRecipe)
+                if (recipeType == "Printed")
                 {
                     Settings.Default.ButtonName = buttonName;
                     Settings.Default.PrintedRecipe = recipe;
@@ -66,12 +66,17 @@ namespace Cookbook_Database
                     frame.Visibility = Visibility.Visible;
                     frame.NavigationService.Navigate(new PrintedRecipeView());
                 }
-                else
+                else if (recipeType == "Cooks Country")
                 {
                     Settings.Default.CooksCountryRecipeToDisplay = button.Content.ToString();
 
                     frame.Visibility = Visibility.Visible;
                     frame.NavigationService.Navigate(new CooksCountryRecipeView());
+                }
+                else if (recipeType == "SearchRecipeView")
+                {
+                    frame.Visibility = Visibility.Visible;
+                    frame.NavigationService.Navigate(new SearchRecipeView());
                 }
             };
 
@@ -84,7 +89,7 @@ namespace Cookbook_Database
 
         public static void Search(TextBox textBox)
         {
-            if (string.IsNullOrEmpty(textBox.Text) || textBox.Text == "Search...")
+            if (string.IsNullOrEmpty(textBox.Text) || textBox.Text == "SearchRecipeView...")
             {
                 MessageBox.Show("You must ender a valid recipe");
             }
@@ -92,21 +97,22 @@ namespace Cookbook_Database
             {
                 Settings.Default.SearchString = textBox.Text;
 
-                MessageBox.Show("Search has been temporarily disabled");
+                PrintedRecipes? Form = Application.Current.Windows[0] as PrintedRecipes;
 
-                // Show Recipes in Search
+                Form.Frame.Visibility = Visibility.Visible;
+                Form.Frame.NavigationService.Navigate(new SearchRecipes());
             }
         }
 
         public static void ChangeFocus(TextBox textBox)
         {
-            if (textBox.Text == "Search...")
+            if (textBox.Text == "SearchRecipeView...")
             {
                 textBox.Text = "";
             }
             else
             {
-                textBox.Text = "Search...";
+                textBox.Text = "SearchRecipeView...";
             }
         }
 

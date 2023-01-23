@@ -142,7 +142,7 @@ namespace Cookbook_Database
         #region Display Recipes
 
         /// <summary>
-        /// Display all recipes of <see cref="Settings.Default.RecipeType"/>
+        /// Display all recipes
         /// </summary>
         /// <param name="recipeType">Type of recipe</param>
         private void DisplayRecipes(string recipeType)
@@ -156,7 +156,7 @@ namespace Cookbook_Database
                 case "Salad":
                     foreach (string recipe in SaladModel.SaladRecipeModelToString())
                     {
-                        CreateRecipeButtons(recipe, RecipePanel, Frame, true);
+                        CreateRecipeButtons(recipe, RecipePanel, Frame, "Printed");
 
                         RecipePanel.Visibility = Visibility.Visible;
                     }
@@ -164,7 +164,7 @@ namespace Cookbook_Database
                 case "Soup":
                     foreach (string recipe in SoupModel.SoupRecipeModelToString())
                     {
-                        CreateRecipeButtons(recipe, RecipePanel, Frame, true);
+                        CreateRecipeButtons(recipe, RecipePanel, Frame, "Printed");
 
                         RecipePanel.Visibility = Visibility.Visible;
                     }
@@ -172,7 +172,7 @@ namespace Cookbook_Database
                 case "Appetizer":
                     foreach (string recipe in AppetizerModel.AppetizerRecipeModelToString())
                     {
-                        CreateRecipeButtons(recipe, RecipePanel, Frame, true);
+                        CreateRecipeButtons(recipe, RecipePanel, Frame, "Printed");
 
                         RecipePanel.Visibility = Visibility.Visible;
                     }
@@ -180,7 +180,7 @@ namespace Cookbook_Database
                 case "Meat":
                     foreach (string recipe in MeatModel.MeatRecipeModelToString())
                     {
-                        CreateRecipeButtons(recipe, RecipePanel, Frame, true);
+                        CreateRecipeButtons(recipe, RecipePanel, Frame, "Printed");
 
                         RecipePanel.Visibility = Visibility.Visible;
                     }
@@ -188,7 +188,7 @@ namespace Cookbook_Database
                 case "Poultry":
                     foreach (string recipe in PoultryModel.PoultryRecipeModelToString())
                     {
-                        CreateRecipeButtons(recipe, RecipePanel, Frame, true);
+                        CreateRecipeButtons(recipe, RecipePanel, Frame, "Printed");
 
                         RecipePanel.Visibility = Visibility.Visible;
                     }
@@ -196,7 +196,7 @@ namespace Cookbook_Database
                 case "Seafood":
                     foreach (string recipe in SeafoodModel.SeafoodRecipeModelToString())
                     {
-                        CreateRecipeButtons(recipe, RecipePanel, Frame, true);
+                        CreateRecipeButtons(recipe, RecipePanel, Frame, "Printed");
 
                         RecipePanel.Visibility = Visibility.Visible;
                     }
@@ -204,7 +204,7 @@ namespace Cookbook_Database
                 case "Vegetable":
                     foreach (string recipe in VegetableModel.VegetableRecipeModelToString())
                     {
-                        CreateRecipeButtons(recipe, RecipePanel, Frame, true);
+                        CreateRecipeButtons(recipe, RecipePanel, Frame, "Printed");
 
                         RecipePanel.Visibility = Visibility.Visible;
                     }
@@ -212,7 +212,7 @@ namespace Cookbook_Database
                 case "Side":
                     foreach (string recipe in SideModel.SideRecipeModelToString())
                     {
-                        CreateRecipeButtons(recipe, RecipePanel, Frame, true);
+                        CreateRecipeButtons(recipe, RecipePanel, Frame, "Printed");
 
                         RecipePanel.Visibility = Visibility.Visible;
                     }
@@ -220,7 +220,7 @@ namespace Cookbook_Database
                 case "Dessert":
                     foreach (string recipe in DessertModel.DessertRecipeModelToString())
                     {
-                        CreateRecipeButtons(recipe, RecipePanel, Frame, true);
+                        CreateRecipeButtons(recipe, RecipePanel, Frame, "Printed");
 
                         RecipePanel.Visibility = Visibility.Visible;
                     }
@@ -228,7 +228,7 @@ namespace Cookbook_Database
                 case "Breakfast":
                     foreach (string recipe in BreakfastModel.BreakfastRecipeModelToString())
                     {
-                        CreateRecipeButtons(recipe, RecipePanel, Frame, true);
+                        CreateRecipeButtons(recipe, RecipePanel, Frame, "Printed");
 
                         RecipePanel.Visibility = Visibility.Visible;
                     }
@@ -236,7 +236,7 @@ namespace Cookbook_Database
                 case "Misc":
                     foreach (string recipe in MiscModel.MiscRecipeModelToString())
                     {
-                        CreateRecipeButtons(recipe, RecipePanel, Frame, true);
+                        CreateRecipeButtons(recipe, RecipePanel, Frame, "Printed");
 
                         RecipePanel.Visibility = Visibility.Visible;
                     }

@@ -1,5 +1,6 @@
 ﻿----Search----
 
+Redesign Search to have RecipeView seperate from original Window
 Refine searching for Cooks Country recipes and search by ingredient - DIFFICULT
 
 ----Favorites----

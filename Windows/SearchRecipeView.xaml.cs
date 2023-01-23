@@ -14,13 +14,13 @@ using static Cookbook_Database.CommonFunctions;
 namespace Cookbook_Database.Windows
 {
     /// <summary>
-    /// Interaction logic for Search.xaml
+    /// Interaction logic for SearchRecipeView.xaml
     /// </summary>
-    public partial class Search : Page
+    public partial class SearchRecipeView : Page
     {
         private readonly ResourceSet? ResourceSet = Properties.Resources.ResourceManager.GetResourceSet(CultureInfo.CurrentCulture, true, true);
 
-        public Search()
+        public SearchRecipeView()
         {
             InitializeComponent();
         }

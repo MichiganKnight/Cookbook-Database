@@ -109,7 +109,7 @@ namespace Cookbook_Database
         {
             foreach (string name in NameModel.NameModelToString())
             {
-                CreateRecipeButtons(name, RecipePanel, Frame, false);
+                CreateRecipeButtons(name, RecipePanel, Frame, "Cooks Country");
             }
         }
 
