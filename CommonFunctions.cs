@@ -233,7 +233,7 @@ namespace Cookbook_Database
 
         public static void Search(TextBox textBox)
         {
-            if (string.IsNullOrEmpty(textBox.Text) || textBox.Text == "SearchRecipeView...")
+            if (string.IsNullOrEmpty(textBox.Text) || textBox.Text == "Search...")
             {
                 MessageBox.Show("You must ender a valid recipe");
             }
